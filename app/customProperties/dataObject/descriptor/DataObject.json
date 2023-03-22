@@ -1,0 +1,24 @@
+{
+  "name": "Data Object",
+  "prefix": "dataObject",
+  "uri": "http://dataObject",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "IoTDataObject",
+      "extends": [
+        "bpmn:DataObjectReference"
+      ],
+      "properties": [
+        {
+          "name": "propName",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ]
+}
