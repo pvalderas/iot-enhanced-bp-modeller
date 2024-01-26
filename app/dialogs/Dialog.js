@@ -78,8 +78,8 @@ export default class Dialog extends React.Component {
 	        	</button>
 	      </div>
 	      {content}
-	  </div>
-  	)
+	 	</div>
+  	);
   }
 
   render(){

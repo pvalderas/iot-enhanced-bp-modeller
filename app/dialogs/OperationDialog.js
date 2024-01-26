@@ -39,7 +39,8 @@ export default class OperationDialog extends React.Component {
     if(device!==this.state.device){
       this.loadOperations(device);
     }
-    if(iot==1) this.setState({ title: "IoT Operations" });
+    if(localStorage.getItem("isOntology")==1) this.setState({title:"SAREF Functions"});
+    else if(iot==1) this.setState({ title: "IoT Operations" });
     else this.setState({ title: "Software App Operations" });
     document.getElementById(this.state.id).style.display = "block";
   }
@@ -83,9 +84,20 @@ export default class OperationDialog extends React.Component {
     
     let camundaNs = 'http://camunda.org/schema/1.0/bpmn';
     let iotDevice=selectedElement.businessObject.lanes[0].name;
+    let process=selectedElement.businessObject.$parent.$parent.rootElements[0].participants[1].name;
     iotDevice=iotDevice.replaceAll("[","").replaceAll("]","");
-    let field1=moddle.createAny('camunda:field',camundaNs, {name:"microservice", stringValue:iotDevice});
-    let field2=moddle.createAny('camunda:field',camundaNs, {name:"operation", stringValue:name});
+    
+    let field1, field2;
+    if(localStorage.getItem("isOntology")=="1"){
+      field1=moddle.createAny('camunda:field',camundaNs, {name:"device", stringValue:iotDevice});
+      field2=moddle.createAny('camunda:field',camundaNs, {name:"function", stringValue:name});
+      let field3=moddle.createAny('camunda:field',camundaNs, {name:"process", stringValue:process});
+      extensionElements.get('values').push(field3);
+    }
+    else{
+      field1=moddle.createAny('camunda:field',camundaNs, {name:"microservice", stringValue:iotDevice});
+      field2=moddle.createAny('camunda:field',camundaNs, {name:"operation", stringValue:name});
+    }
 
     extensionElements.get('values').push(field1);
     extensionElements.get('values').push(field2);

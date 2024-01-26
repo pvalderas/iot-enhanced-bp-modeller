@@ -1,6 +1,6 @@
 import React from 'react';
 import {showMessage} from './MessageDialog.js'
-import {updateMenuFloWareOption} from "../menu/Menu.js";
+import {updateMenuRedLabel,updateMenuTitle} from "../menu/Menu.js";
 import {updateDownloadButtonFloWareOption} from "../properties-panel/DownloadButton.js";
 import {updateSendButtonFloWareOption} from "../properties-panel/SendButton.js";
 import {updateSendDialogFloWareOption} from "../dialogs/SendCompositionDialog.js";
@@ -38,10 +38,11 @@ export default class UploadDialog extends React.Component {
 
   }
 
-  updateSystem(system, isFloWare){
+  updateSystem(system, isFloWare, isOntology){
     localStorage.setItem("selectedSystem",system);
     localStorage.setItem("isFloWare",isFloWare);
-    updateMenuFloWareOption();
+    localStorage.setItem("isOntology",isOntology);
+    updateMenuRedLabel();
     updateDownloadButtonFloWareOption();
     updateSendButtonFloWareOption();
     updateSendDialogFloWareOption();
@@ -50,7 +51,7 @@ export default class UploadDialog extends React.Component {
   loadBPMN(compo){
     var user;
     if(compo.system){
-      this.updateSystem(compo.system, compo.isFloWare);
+      this.updateSystem(compo.system, compo.isFloWare, compo.ontology);
       user=this.state.userID;
     }else{ //is called from SendSystemModelsDialog
       user=compo.user;
@@ -62,13 +63,14 @@ export default class UploadDialog extends React.Component {
       sessionStorage.removeItem("processId");
 
     var url=localStorage.getItem("managerUrl")+(localStorage.getItem("managerUrl").charAt(localStorage.getItem("managerUrl").length-1)=="/"?"":"/");
-
+    updateMenuTitle(compo.id);
     fetch(url+"compositions/"+user+"/"+compo.id)
       .then(function (response) {
         return response.text();
       })
-      .then(compo => {
-         this.modeler.importXML(compo);
+      .then(compoBPMN => {
+         this.modeler.importXML(compoBPMN);
+         
          $("#"+this.state.id).modal('hide');
 /************************************ REPETIDO EN IOTDEVICEDIALOG ************************************/
         var url=localStorage.getItem("serviceServerUrl")+(localStorage.getItem("serviceServerUrl").charAt(localStorage.getItem("serviceServerUrl").length-1)=="/"?"":"/")+localStorage.getItem("selectedSystem")+"/eureka/apps";

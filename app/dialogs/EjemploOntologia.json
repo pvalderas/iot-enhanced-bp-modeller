@@ -1,0 +1,1666 @@
+{
+    "@attributes": {
+        "ontologyIRI": "http:\\/\\/www.w3.org\\/ns\\/sosa\\/"
+    },
+    "Prefix": [
+        {
+            "@attributes": {
+                "name": "",
+                "IRI": "http:\\/\\/www.w3.org\\/ns\\/sosa\\/"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "owl",
+                "IRI": "http:\\/\\/www.w3.org\\/2002\\/07\\/owl#"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "rdf",
+                "IRI": "http:\\/\\/www.w3.org\\/1999\\/02\\/22-rdf-syntax-ns#"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "xml",
+                "IRI": "http:\\/\\/www.w3.org\\/XML\\/1998\\/namespace"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "xsd",
+                "IRI": "http:\\/\\/www.w3.org\\/2001\\/XMLSchema#"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "foaf",
+                "IRI": "http:\\/\\/xmlns.com\\/foaf\\/0.1\\/"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "rdfs",
+                "IRI": "http:\\/\\/www.w3.org\\/2000\\/01\\/rdf-schema#"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "skos",
+                "IRI": "http:\\/\\/www.w3.org\\/2004\\/02\\/skos\\/core#"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "sosa",
+                "IRI": "http:\\/\\/www.w3.org\\/ns\\/sosa\\/"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "time",
+                "IRI": "http:\\/\\/www.w3.org\\/2006\\/time#"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "vann",
+                "IRI": "http:\\/\\/purl.org\\/vocab\\/vann\\/"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "voaf",
+                "IRI": "http:\\/\\/purl.org\\/vocommons\\/voaf#"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "schema",
+                "IRI": "http:\\/\\/schema.org\\/"
+            }
+        },
+        {
+            "@attributes": {
+                "name": "dcterms",
+                "IRI": "http:\\/\\/purl.org\\/dc\\/terms\\/"
+            }
+        }
+    ],
+    "Annotation": [
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:created"
+                }
+            },
+            "Literal": "2017-04-17"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:creator"
+                }
+            },
+            "AnonymousIndividual": {
+                "@attributes": {
+                    "nodeID": "_:genid2147483648"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:description"
+                }
+            },
+            "Literal": "This ontology is based on the SSN Ontology by the W3C Semantic Sensor Networks Incubator Group (SSN-XG), together with considerations from the W3C\\/OGC Spatial Data on the Web Working Group."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:license"
+                }
+            },
+            "IRI": "http:\\/\\/www.opengeospatial.org\\/ogc\\/Software"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:license"
+                }
+            },
+            "IRI": "http:\\/\\/www.w3.org\\/Consortium\\/Legal\\/2015\\/copyright-software-and-document"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:rights"
+                }
+            },
+            "Literal": "Copyright 2017 W3C\\/OGC."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:title"
+                }
+            },
+            "Literal": "Sensor, Observation, Sample, and Actuator (SOSA) Ontology"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "vann:preferredNamespacePrefix"
+                }
+            },
+            "Literal": "sosa"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "vann:preferredNamespaceUri"
+                }
+            },
+            "Literal": "http:\\/\\/www.w3.org\\/ns\\/sosa\\/"
+        }
+    ],
+    "Declaration": [
+        {
+            "Class": {
+                "@attributes": {
+                    "abbreviatedIRI": "voaf:Vocabulary"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "abbreviatedIRI": "time:TemporalEntity"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "ActuatableProperty"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuation"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuator"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "FeatureOfInterest"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "ObservableProperty"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Observation"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Platform"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Procedure"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Result"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Sample"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Sampler"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Sampling"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Sensor"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "abbreviatedIRI": "foaf:Agent"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "actsOnProperty"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "hasFeatureOfInterest"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "hasResult"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "hasSample"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "hosts"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "isActedOnBy"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "isFeatureOfInterestOf"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "isHostedBy"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "isObservedBy"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "isResultOf"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "isSampleOf"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeActuation"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeByActuator"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeBySampler"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeBySensor"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeObservation"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeSampling"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "observedProperty"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "observes"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "phenomenonTime"
+                }
+            }
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "usedProcedure"
+                }
+            }
+        },
+        {
+            "DataProperty": {
+                "@attributes": {
+                    "IRI": "hasSimpleResult"
+                }
+            }
+        },
+        {
+            "DataProperty": {
+                "@attributes": {
+                    "IRI": "level"
+                }
+            }
+        },
+        {
+            "DataProperty": {
+                "@attributes": {
+                    "IRI": "resultTime"
+                }
+            }
+        },
+        {
+            "DataProperty": {
+                "@attributes": {
+                    "IRI": "timeStamp"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": ""
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Access_Controller"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Air_System"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Allow_Access"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Level"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Sensor"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Value"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Deny_Access"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Get_CO2_Level"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Notifications_Off"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Notifications_On"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "People_Presence"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Presence_Detected"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Presence_Detector"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Reading_of_CO2"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Start"
+                }
+            }
+        },
+        {
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Stop"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:created"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:creator"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:description"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:license"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:rights"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "dcterms:title"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "vann:preferredNamespacePrefix"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "vann:preferredNamespaceUri"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "schema:domainIncludes"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "schema:rangeIncludes"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:definition"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:example"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:note"
+                }
+            }
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "foaf:name"
+                }
+            }
+        }
+    ],
+    "ClassAssertion": [
+        {
+            "Class": {
+                "@attributes": {
+                    "abbreviatedIRI": "voaf:Vocabulary"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": ""
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuator"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Access_Controller"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuator"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Air_System"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Allow_Access"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "ActuatableProperty"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Level"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "ObservableProperty"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Level"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuator"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Sensor"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Sensor"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Sensor"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Result"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Value"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Deny_Access"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Get_CO2_Level"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Notifications_Off"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Notifications_On"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "ObservableProperty"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "People_Presence"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Observation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Presence_Detected"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Sensor"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Presence_Detector"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Observation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Reading_of_CO2"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Start"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "IRI": "Actuation"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "Stop"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "abbreviatedIRI": "foaf:Agent"
+                }
+            },
+            "AnonymousIndividual": {
+                "@attributes": {
+                    "nodeID": "_:genid2147483648"
+                }
+            }
+        },
+        {
+            "Class": {
+                "@attributes": {
+                    "abbreviatedIRI": "foaf:Agent"
+                }
+            },
+            "AnonymousIndividual": {
+                "@attributes": {
+                    "nodeID": "_:genid2147483649"
+                }
+            }
+        }
+    ],
+    "ObjectPropertyAssertion": [
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeActuation"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Access_Controller"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Allow_Access"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeActuation"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Access_Controller"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Deny_Access"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeActuation"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Air_System"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Start"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeActuation"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Air_System"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Stop"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeByActuator"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Allow_Access"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Access_Controller"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeActuation"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Sensor"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Get_CO2_Level"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeActuation"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Sensor"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Notifications_Off"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeActuation"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Sensor"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Notifications_On"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeObservation"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Sensor"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Reading_of_CO2"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeByActuator"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Deny_Access"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Access_Controller"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "hasResult"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Get_CO2_Level"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Value"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeBySensor"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Get_CO2_Level"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Sensor"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeByActuator"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Notifications_Off"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Sensor"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeByActuator"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Notifications_On"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Sensor"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "observedProperty"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "People_Presence"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "People_Presence"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "hasResult"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Reading_of_CO2"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Value"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeBySensor"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Reading_of_CO2"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Sensor"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "observedProperty"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Reading_of_CO2"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "CO2_Level"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeByActuator"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Start"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Air_System"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": {
+                "@attributes": {
+                    "IRI": "madeByActuator"
+                }
+            },
+            "NamedIndividual": [
+                {
+                    "@attributes": {
+                        "IRI": "Stop"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "Air_System"
+                    }
+                }
+            ]
+        }
+    ],
+    "DataPropertyAssertion": [
+        {
+            "DataProperty": {
+                "@attributes": {
+                    "IRI": "level"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Value"
+                }
+            },
+            "Literal": {}
+        },
+        {
+            "DataProperty": {
+                "@attributes": {
+                    "IRI": "timeStamp"
+                }
+            },
+            "NamedIndividual": {
+                "@attributes": {
+                    "IRI": "CO2_Value"
+                }
+            },
+            "Literal": {}
+        }
+    ],
+    "InverseObjectProperties": [
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "actsOnProperty"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "isActedOnBy"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "hasFeatureOfInterest"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "isFeatureOfInterestOf"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "hasResult"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "isResultOf"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "hasSample"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "isSampleOf"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "hosts"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "isHostedBy"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "isObservedBy"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "observes"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "madeActuation"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "madeByActuator"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "madeBySampler"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "madeSampling"
+                    }
+                }
+            ]
+        },
+        {
+            "ObjectProperty": [
+                {
+                    "@attributes": {
+                        "IRI": "madeBySensor"
+                    }
+                },
+                {
+                    "@attributes": {
+                        "IRI": "madeObservation"
+                    }
+                }
+            ]
+        }
+    ],
+    "DataPropertyRange": {
+        "DataProperty": {
+            "@attributes": {
+                "IRI": "resultTime"
+            }
+        },
+        "Datatype": {
+            "@attributes": {
+                "abbreviatedIRI": "xsd:dateTime"
+            }
+        }
+    },
+    "AnnotationAssertion": [
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:comment"
+                }
+            },
+            "IRI": "ActuatableProperty",
+            "Literal": "An actuatable quality (property, characteristic) of a FeatureOfInterest."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:isDefinedBy"
+                }
+            },
+            "IRI": [
+                "ActuatableProperty",
+                {}
+            ]
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:label"
+                }
+            },
+            "IRI": "ActuatableProperty",
+            "Literal": "Actuatable Property"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:definition"
+                }
+            },
+            "IRI": "ActuatableProperty",
+            "Literal": "An actuatable quality (property, characteristic) of a FeatureOfInterest."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:example"
+                }
+            },
+            "IRI": "ActuatableProperty",
+            "Literal": "A window actuator acts by changing the state between a frame and a window. The ability of the window to be opened and closed is its ActuatableProperty."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:comment"
+                }
+            },
+            "IRI": "Actuation",
+            "Literal": "An Actuation carries out an (Actuation) Procedure to change the state of the world using an Actuator."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:isDefinedBy"
+                }
+            },
+            "IRI": [
+                "Actuation",
+                {}
+            ]
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:label"
+                }
+            },
+            "IRI": "Actuation",
+            "Literal": "Actuation"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:definition"
+                }
+            },
+            "IRI": "Actuation",
+            "Literal": "An Actuation carries out an (Actuation) Procedure to change the state of the world using an Actuator."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:example"
+                }
+            },
+            "IRI": "Actuation",
+            "Literal": "The activity of automatically closing a window if the temperature in a room drops below 20 degree Celsius. The activity is the Actuation and the device that closes the window is the Actuator. The Procedure is the rule, plan, or specification that defines the conditions that triggers the Actuation, here a drop in temperature. "
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:comment"
+                }
+            },
+            "IRI": "Actuator",
+            "Literal": "A device that is used by, or implements, an (Actuation) Procedure that changes the state of the world."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:isDefinedBy"
+                }
+            },
+            "IRI": [
+                "Actuator",
+                {}
+            ]
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:label"
+                }
+            },
+            "IRI": "Actuator",
+            "Literal": "Actuator"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:definition"
+                }
+            },
+            "IRI": "Actuator",
+            "Literal": "A device that is used by, or implements, an (Actuation) Procedure that changes the state of the world."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:example"
+                }
+            },
+            "IRI": "Actuator",
+            "Literal": "A window actuator for automatic window control, i.e., opening or closing the window."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:comment"
+                }
+            },
+            "IRI": "FeatureOfInterest",
+            "Literal": "The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:isDefinedBy"
+                }
+            },
+            "IRI": [
+                "FeatureOfInterest",
+                {}
+            ]
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "rdfs:label"
+                }
+            },
+            "IRI": "FeatureOfInterest",
+            "Literal": "Feature Of Interest"
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:definition"
+                }
+            },
+            "IRI": "FeatureOfInterest",
+            "Literal": "The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling."
+        },
+        {
+            "AnnotationProperty": {
+                "@attributes": {
+                    "abbreviatedIRI": "skos:example"
+                }
+            },
+            "IRI": "FeatureOfInterest",
+            "Literal":"When measuring the height of a tree, the height is the observed ObservableProperty,20m may be the Result of the Observation, and the tree is the FeatureOfInterest. A window is a FeatureOfInterest for an automatic window control Actuator."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"ObservableProperty","Literal":"An observable quality (property, characteristic) of a FeatureOfInterest."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["ObservableProperty",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"ObservableProperty","Literal":"Observable Property"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"ObservableProperty","Literal":"An observable quality (property, characteristic) of a FeatureOfInterest."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"ObservableProperty","Literal":"The height of a tree, the depth of a water body, or the temperature of a surface are examples of observable properties, while the value of a classic car is not (directly) observable but asserted."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Observation","Literal":"Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["Observation",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"Observation","Literal":"Observation"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"Observation","Literal":"Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Observation","Literal":"The activity of estimating the intensity of an Earthquake using the Mercalli intensity scale is an Observation as is measuring the moment magnitude, i.e., the energy released by said earthquake."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Platform","Literal":"A Platform is an entity that hosts other entities, particularly Sensors, Actuators, Samplers, and other Platforms."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["Platform",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"Platform","Literal":"Platform"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"Platform","Literal":"A Platform is an entity that hosts other entities, particularly Sensors, Actuators, Samplers, and other Platforms."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Platform","Literal":"A post, buoy, vehicle, ship, aircraft, satellite, cell-phone, human or animal may act as platforms for (technical or biological) sensors or actuators."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Procedure","Literal":"A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["Procedure",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"Procedure","Literal":"Procedure"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"Procedure","Literal":"A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Procedure","Literal":"The measured wind speed differs depending on the height of the sensor above the surface, e.g., due to friction. Consequently, procedures for measuring wind speed define a standard height for anemometers above ground, typically 10m for meteorological measures and 2m in Agrometeorology. This definition of height, sensor placement, and so forth are defined by the Procedure."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:note"}},"IRI":"Procedure","Literal":"Many observations may be created via the same Procedure, the same way as many tables are assembled using the same instructions (as information objects, not their concrete realization)."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Result","Literal":"The Result of an Observation, Actuation, or act of Sampling. To store an observation's simple result value one can use the hasSimpleResult property."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["Result",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"Result","Literal":"Result"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"Result","Literal":"The Result of an Observation, Actuation, or act of Sampling. To store an observation's simple result value one can use the hasSimpleResult property."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Result","Literal":"The value 20 as the height of a certain tree together with the unit, e.g., Meter."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Sample","Literal":"A Sample is the result from an act of Sampling."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Sample","Literal":"Feature which is intended to be representative of a FeatureOfInterest on which Observations may be made."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Sample","Literal":"Physical samples are sometimes known as 'specimens'."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Sample","Literal":"Samples are artifacts of an observational strategy, and have no significant function outside of their role in the observation process. The characteristics of the samples themselves are of little interest, except perhaps to the manager of a sampling campaign.\\n\\nA Sample is intended to sample some FatureOfInterest, so there is an expectation of at least one isSampleOf property. However, in some cases the identity, and even the exact type, of the sampled feature may not be known when observations are made using the sampling features."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["Sample",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"Sample","Literal":"Sample"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"Sample","Literal":"Feature which is intended to be representative of a FeatureOfInterest on which Observations may be made."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sample","Literal":"A 'station' is essentially an identifiable locality where a sensor system or Procedure may be deployed and an observation made. In the context of the observation model, it connotes the 'world in the vicinity of the station', so the observed properties relate to the physical medium at the station, and not to any physical artifact such as a mooring, buoy, benchmark, monument, well, etc."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sample","Literal":"A statistical sample is often designed to be characteristic of an entire population, so that observations can be made regarding the sample that provide a good estimate of the properties of the population."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:note"}},"IRI":"Sample","Literal":"A transient sample, such as a ships-track or flight-line, might be identified and described, but is unlikely to be revisited exactly."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Sampler","Literal":"A device that is used by, or implements, a Sampling Procedure to create or transform one or more samples."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["Sampler",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"Sampler","Literal":"Sampler"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"Sampler","Literal":"A device that is used by, or implements, a Sampling Procedure to create or transform one or more samples."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampler","Literal":"A ball mill, diamond drill, hammer, hypodermic syringe and needle, image Sensor or a soil auger can all act as sampling devices (i.e., be Samplers). However, sometimes the distinction between the Sampler and the Sensor is not evident, as they are packaged as a unit. A Sampler need not be a physical device."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Sampling","Literal":"An act of Sampling carries out a sampling Procedure to create or transform one or more samples."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["Sampling",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"Sampling","Literal":"Sampling"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"Sampling","Literal":"An act of Sampling carries out a sampling Procedure to create or transform one or more samples."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Crushing a rock sample in a ball mill."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Digging a pit through a soil sequence."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Dividing a field site into quadrants."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Drawing blood from a patient."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Drilling an observation well."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Establishing a station for environmental monitoring."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Registering an image of the landscape."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Selecting a subset of a population."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Sieving a powder to separate the subset finer than 100-mesh."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Splitting a piece of drill-core to create two new samples."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sampling","Literal":"Taking a diamond-drill core from a rock outcrop."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"Sensor","Literal":"Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["Sensor",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"Sensor","Literal":"Sensor"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"Sensor","Literal":"Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"Sensor","Literal":"Accelerometers, gyroscopes, barometers, magnetometers, and so forth are Sensors that are typically mounted on a modern smart phone (which acts as Platform). Other examples of sensors include the human eyes."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["actsOnProperty","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["actsOnProperty","ActuatableProperty"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"actsOnProperty","Literal":"Relation between an Actuation and the property of a FeatureOfInterest it is acting upon."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["actsOnProperty",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"actsOnProperty","Literal":"acts on property"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"actsOnProperty","Literal":"Relation between an Actuation and the property of a FeatureOfInterest it is acting upon."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"actsOnProperty","Literal":"In the activity (Actuation) of automatically closing a window if the temperature in a room drops below 20 degrees Celsius, the property on which the Actuator acts upon is the state of the window as it changes from being open to being closed. "},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasFeatureOfInterest","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasFeatureOfInterest","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasFeatureOfInterest","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hasFeatureOfInterest","FeatureOfInterest"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hasFeatureOfInterest","Sample"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"hasFeatureOfInterest","Literal":"A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["hasFeatureOfInterest",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"hasFeatureOfInterest","Literal":"has feature of interest"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"hasFeatureOfInterest","Literal":"A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"hasFeatureOfInterest","Literal":"For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasResult","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasResult","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasResult","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hasResult","Result"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hasResult","Sample"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"hasResult","Literal":"Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["hasResult",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"hasResult","Literal":"has result"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"hasResult","Literal":"Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasSample","FeatureOfInterest"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hasSample","Sample"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"hasSample","Literal":"Relation between a FeatureOfInterest and the Sample used to represent it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["hasSample",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"hasSample","Literal":"has sample"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"hasSample","Literal":"Relation between a FeatureOfInterest and the Sample used to represent it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasSimpleResult","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasSimpleResult","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hasSimpleResult","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"hasSimpleResult","Literal":"The simple value of an Observation or Actuation or act of Sampling."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["hasSimpleResult",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"hasSimpleResult","Literal":"has simple result"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"hasSimpleResult","Literal":"The simple value of an Observation or Actuation or act of Sampling."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"hasSimpleResult","Literal":"For instance, the values 23 or true."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["hosts","Platform"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hosts","Actuator"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hosts","Platform"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hosts","Sampler"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["hosts","Sensor"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"hosts","Literal":"Relation between a Platform and a Sensor, Actuator, Sampler, or Platform, hosted or mounted on it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["hosts",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"hosts","Literal":"hosts"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"hosts","Literal":"Relation between a Platform and a Sensor, Actuator, Sampler, or Platform, hosted or mounted on it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isActedOnBy","ActuatableProperty"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isActedOnBy","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"isActedOnBy","Literal":"Relation between an ActuatableProperty of a FeatureOfInterest and an Actuation changing its state."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["isActedOnBy",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"isActedOnBy","Literal":"is acted on by"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"isActedOnBy","Literal":"Relation between an ActuatableProperty of a FeatureOfInterest and an Actuation changing its state."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:example"}},"IRI":"isActedOnBy","Literal":"In the activity (Actuation) of automatically closing a window if the temperature in a room drops below 20 degrees Celsius, the property on which the Actuator acts upon is the state of the window as it changes from being open to being closed. "},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isFeatureOfInterestOf","FeatureOfInterest"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isFeatureOfInterestOf","Sample"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isFeatureOfInterestOf","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isFeatureOfInterestOf","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isFeatureOfInterestOf","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"isFeatureOfInterestOf","Literal":"A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["isFeatureOfInterestOf",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"isFeatureOfInterestOf","Literal":"is feature of interest of"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"isFeatureOfInterestOf","Literal":"A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isHostedBy","Actuator"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isHostedBy","Platform"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isHostedBy","Sampler"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isHostedBy","Sensor"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isHostedBy","Platform"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"isHostedBy","Literal":"Relation between a Sensor, Actuator, Sampler, or Platform, and the Platform that it is mounted on or hosted by."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["isHostedBy",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"isHostedBy","Literal":"is hosted by"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"isHostedBy","Literal":"Relation between a Sensor, Actuator, Sampler, or Platform, and the Platform that it is mounted on or hosted by."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isObservedBy","ObservableProperty"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isObservedBy","Sensor"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"isObservedBy","Literal":"Relation between an ObservableProperty and the Sensor able to observe it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["isObservedBy",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"isObservedBy","Literal":"is observed by"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"isObservedBy","Literal":"Relation between an ObservableProperty and the Sensor able to observe it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isResultOf","Result"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isResultOf","Sample"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isResultOf","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isResultOf","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isResultOf","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"isResultOf","Literal":"Relation linking a Result to the Observation or Actuation or act of Sampling that created or caused it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["isResultOf",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"isResultOf","Literal":"is result of"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"isResultOf","Literal":"Relation linking a Result to the Observation or Actuation or act of Sampling that created or caused it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["isSampleOf","Sample"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["isSampleOf","FeatureOfInterest"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"isSampleOf","Literal":"Relation from a Sample to the FeatureOfInterest that it is intended to be representative of."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["isSampleOf",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"isSampleOf","Literal":"is sample of"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"isSampleOf","Literal":"Relation from a Sample to the FeatureOfInterest that it is intended to be representative of."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["madeActuation","Actuator"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["madeActuation","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"madeActuation","Literal":"Relation between an Actuator and the Actuation it has made."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["madeActuation",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"madeActuation","Literal":"made actuation"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"madeActuation","Literal":"Relation between an Actuator and the Actuation it has made."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["madeByActuator","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["madeByActuator","Actuator"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"madeByActuator","Literal":"Relation linking an Actuation to the Actuator that made that Actuation."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["madeByActuator",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"madeByActuator","Literal":"made by actuator"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"madeByActuator","Literal":"Relation linking an Actuation to the Actuator that made that Actuation."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["madeBySampler","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["madeBySampler","Sampler"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"madeBySampler","Literal":"Relation linking an act of Sampling to the Sampler (sampling device or entity) that made it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["madeBySampler",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"madeBySampler","Literal":"made by sampler"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"madeBySampler","Literal":"Relation linking an act of Sampling to the Sampler (sampling device or entity) that made it."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["madeBySensor","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["madeBySensor","Sensor"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"madeBySensor","Literal":"Relation between an Observation and the Sensor which made the Observation."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["madeBySensor",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"madeBySensor","Literal":"made by sensor"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"madeBySensor","Literal":"Relation between an Observation and the Sensor which made the Observation."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["madeObservation","Sensor"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["madeObservation","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"madeObservation","Literal":"Relation between a Sensor and an Observation made by the Sensor."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["madeObservation",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"madeObservation","Literal":"made observation"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"madeObservation","Literal":"Relation between a Sensor and an Observation made by the Sensor."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["madeSampling","Sampler"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["madeSampling","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"madeSampling","Literal":"Relation between a Sampler (sampling device or entity) and the Sampling act it performed."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["madeSampling",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"madeSampling","Literal":"made sampling"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"madeSampling","Literal":"Relation between a Sampler (sampling device or entity) and the Sampling act it performed."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["observedProperty","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["observedProperty","ObservableProperty"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"observedProperty","Literal":"Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["observedProperty",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"observedProperty","Literal":"observed property"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"observedProperty","Literal":"Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["observes","Sensor"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["observes","ObservableProperty"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"observes","Literal":"Relation between a Sensor and an ObservableProperty that it is capable of sensing."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["observes",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"observes","Literal":"observes"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"observes","Literal":"Relation between a Sensor and an ObservableProperty that it is capable of sensing."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["phenomenonTime","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["phenomenonTime","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["phenomenonTime","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":"phenomenonTime","AbbreviatedIRI":"time:TemporalEntity"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"phenomenonTime","Literal":"The time that the Result of an Observation, Actuation or Sampling applies to the FeatureOfInterest. Not necessarily the same as the resultTime. May be an Interval or an Instant, or some other compound TemporalEntity."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["phenomenonTime",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"phenomenonTime","Literal":"phenomenon time"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"phenomenonTime","Literal":"The time that the Result of an Observation, Actuation or Sampling applies to the FeatureOfInterest. Not necessarily the same as the resultTime. May be an Interval or an Instant, or some other compound TemporalEntity."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["resultTime","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["resultTime","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["resultTime","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"resultTime","Literal":"The result time is the instant of time when the Observation, Actuation or Sampling activity was completed."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["resultTime",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"resultTime","Literal":"result time"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"resultTime","Literal":"The result time is the instant of time when the Observation, Actuation or Sampling activity was completed."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["usedProcedure","Actuation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["usedProcedure","Observation"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:domainIncludes"}},"IRI":["usedProcedure","Sampling"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"schema:rangeIncludes"}},"IRI":["usedProcedure","Procedure"]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:comment"}},"IRI":"usedProcedure","Literal":"A relation to link to a re-usable Procedure used in making an Observation, an Actuation, or a Sample, typically through a Sensor, Actuator or Sampler."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:isDefinedBy"}},"IRI":["usedProcedure",{}]},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"rdfs:label"}},"IRI":"usedProcedure","Literal":"used procedure"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"skos:definition"}},"IRI":"usedProcedure","Literal":"A relation to link to a re-usable Procedure used in making an Observation, an Actuation, or a Sample, typically through a Sensor, Actuator or Sampler."},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"foaf:name"}},"AnonymousIndividual":{"@attributes":{"nodeID":"_:genid2147483648"}},"Literal":"W3C\\/OGC Spatial Data on the Web Working Group"},{"AnnotationProperty":{"@attributes":{"abbreviatedIRI":"foaf:name"}},"AnonymousIndividual":{"@attributes":{"nodeID":"_:genid2147483649"}},"Literal":"W3C\\/OGC Spatial Data on the Web Working Group"}]}

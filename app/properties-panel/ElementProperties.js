@@ -107,12 +107,11 @@ export default class ElementProperties extends React.Component{
   }
   
 
-
   showOperationList(){
       
-      var IoTDeviceID=this.state.element.businessObject.lanes[0].name;
+      let IoTDeviceID=this.state.element.businessObject.lanes[0].name;
 
-      if(IoTDeviceID!=null){
+      if(IoTDeviceID!=null && IoTDeviceID!=undefined && IoTDeviceID.trim().lengh>0){
         if(getDi(this.state.element).$parent.stroke)
             showOperationDialog(IoTDeviceID,1);
         else

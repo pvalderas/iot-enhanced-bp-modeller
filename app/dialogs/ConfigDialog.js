@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import {updateMenuFloWareOption, newComposition} from "../menu/Menu.js";
+import {updateMenuRedLabel, newComposition} from "../menu/Menu.js";
 import {updateDownloadButtonFloWareOption} from "../properties-panel/DownloadButton.js";
 import {updateSendButtonFloWareOption} from "../properties-panel/SendButton.js";
 import {updateSendDialogFloWareOption} from "../dialogs/SendCompositionDialog.js";
@@ -33,9 +33,9 @@ export default class ConfigDialog extends React.Component {
       saveButtonLabel:"Save",
       cancelButtonLabel:"Close",
       id:"config-dialog",
-      defaultServiceRegistryUrl:"http://pedvalar.webs.upv.es/microservices/",
-      defaultManagerUrl:"http://pedvalar.webs.upv.es/microservices/",
-      placeHolderRegistryUrl: "default: http://pedvalar.webs.upv.es/eureka/",
+      defaultServiceRegistryUrl:"https://pedvalar.webs.upv.es/microservices/",
+      defaultManagerUrl:"https://pedvalar.webs.upv.es/microservices/",
+      placeHolderRegistryUrl: "default: https://pedvalar.webs.upv.es/eureka/",
       serviceRegistryUrl:"",
       managerUrl:"",
       serviceRegistryType:"eureka",
@@ -46,7 +46,7 @@ export default class ConfigDialog extends React.Component {
       firstTime:true
     };
 
-    this.systemUrl="http://pedvalar.webs.upv.es/microservices/systems";
+    this.systemUrl="https://pedvalar.webs.upv.es/microservices/systems";
 
     this.saveConfig=this.saveConfig.bind(this);
     this.changeManagerUrl=this.changeManagerUrl.bind(this);
@@ -60,7 +60,7 @@ export default class ConfigDialog extends React.Component {
   }
 
   updateFloWareElements(){
-    updateMenuFloWareOption();
+    updateMenuRedLabel();
     updateDownloadButtonFloWareOption();
     updateSendButtonFloWareOption();
     updateSendDialogFloWareOption();
@@ -89,7 +89,7 @@ export default class ConfigDialog extends React.Component {
   }
 
   changeIoTSystem(event){
-    var placeHolderRegistryUrl= "default: http://pedvalar.webs.upv.es/eureka/";
+    var placeHolderRegistryUrl= "default: https://pedvalar.webs.upv.es/eureka/";
     if(event.target.value=="other")  placeHolderRegistryUrl="";
     this.setState({selectedIoTSystem: event.target.value, serviceRegistryUrl:"", placeHolderRegistryUrl:placeHolderRegistryUrl, other: event.target.value=="other"});
   }
@@ -128,6 +128,7 @@ export default class ConfigDialog extends React.Component {
        localStorage.setItem("serviceServerUrl", this.state.iotSystems[this.state.selectedIoTSystem].url);
        localStorage.setItem("selectedSystem", this.state.iotSystems[this.state.selectedIoTSystem].id);
        localStorage.setItem("isFloWare", this.state.iotSystems[this.state.selectedIoTSystem].isFloWare);
+       localStorage.setItem("isOntology", this.state.iotSystems[this.state.selectedIoTSystem].isOntology);
        this.updateFloWareElements();
     }
 

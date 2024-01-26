@@ -48,8 +48,6 @@ export default class EventDialog extends React.Component {
     var urls=JSON.parse(sessionStorage.getItem("eventUrls"));
     var url=urls[sensor];
 
-    console.log(url);
-
     fetch(url)
       .then(function (response) {
         return response.json()
@@ -76,7 +74,7 @@ export default class EventDialog extends React.Component {
     input.dispatchEvent(inputEvent);
   }
 
-  addEvent(name, id){
+  addEvent(name){
     this.updateInput(name);
     document.getElementById(this.state.id).style.display = "none";
   }
@@ -88,7 +86,7 @@ export default class EventDialog extends React.Component {
                 color:"black"
               }
 	  		const events = this.state.events.map(event => 
-	  			<li key={event.ID} className="list-group-item"><a href="#" onClick={this.addEvent.bind(this,event.ID)} style={style}>{event.ID}</a></li>
+	  			<li key={event.id} className="list-group-item"><a href="#" onClick={this.addEvent.bind(this,event.name)} style={style}>{event.name}</a></li>
 	  		);
 	  		content=<ul className="list-group">{events}</ul>;
   		}else{

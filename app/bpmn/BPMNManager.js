@@ -255,9 +255,31 @@ export default class BPMNManager{
 							
 							switch(node.$type){
 								case "bpmn:ServiceTask": 
+									delete node['class'];
+									delete node['topic'];
+									delete node['type'];
+									if(localStorage.getItem("isOntology")=="1"){
+										//node.$attrs['camunda:class']="es.upv.pros.pvalderas.saref.command.publisher.camunda.CommandPublisher";
+										node.$attrs['camunda:type']="external";
+										node.$attrs['camunda:topic']="command"; 
+										var extensionElements = moddle.create('bpmn:ExtensionElements');
+										if(node.extensionElements && node.extensionElements.values && node.extensionElements.values.length>0){
+											node.extensionElements.values.forEach(function(element){
+							
+								            if(element.$type=="camunda:Field"){
+												extensionElements.get('values').push(element);
+								            }
+								          });
+										}
+										var listener=moddle.createAny('camunda:executionListener',camundaNs, {class:"es.upv.pros.pvalderas.saref.command.publisher.camunda.CommandPublisher",event:"start"});
+										extensionElements.get('values').push(listener);
+										node.extensionElements=extensionElements;
+
+										
+									}else{
 	                                    node.$attrs['camunda:class']="es.upv.pros.pvalderas.bpcontroller.server.bpmn.ServiceClass";
-												
-										break;
+									}
+									break;
 								case "bpmn:ExclusiveGateway": 	
 
 										var camundaNs = 'http://camunda.org/schema/1.0/bpmn';

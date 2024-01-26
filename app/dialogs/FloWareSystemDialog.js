@@ -44,6 +44,8 @@ export default class FloWareSystemDialog extends React.Component {
 
 
   loadSystems() {
+    this.serviceServerUrl=localStorage.getItem("serviceServerUrl");
+    this.serviceServerType=localStorage.getItem("serviceServerType");
       document.querySelector('#'+this.state.loader).style.display = "block";
 
       var url=this.serviceServerUrl+(this.serviceServerUrl.charAt(this.serviceServerUrl.length-1)=="/"?"":"/")+"system/floware/"+localStorage.getItem("selectedSystem")+"/subsystems";

@@ -60,7 +60,6 @@ export default class SendSystemModelsDialog extends React.Component {
     var nasatlx="http://pedvalar.webs.upv.es/iot-enhanced-bp-modeller/v1/nasatlx/nasatlx.html";
     var aLink="<a href='"+nasatlx+"' onclick='window.open(this.href,\"targetWindow\",\"toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=700\"); return false;' data-dismiss='modal'>";
 
-    console.log(data);
     if(data=="1"){
       showMessage("Congratulations","The BPMN model has been successfully saved in the server","Close"); //<br>Please, fill in the following "+aLink+"evaluation form</a>
     }else{
@@ -267,12 +266,12 @@ export default class SendSystemModelsDialog extends React.Component {
             <div className="modal-footer">
               <div className="row">
                   <div className="form-check form-switch">
-                    <input className="form-check-input" type="checkbox" id="deploy" onChange={ (event) => {this.enableDeployment(event)} } />
-                    <label className="form-check-label" htmlFor="deploy">Deploy models into the BPMN engine</label>
+                    <input className="form-check-input" type="checkbox" id="deployModels" onChange={ (event) => {this.enableDeployment(event)} } />
+                    <label className="form-check-label" htmlFor="deployModels">Deploy models into the BPMN engine</label>
                   </div>
                    <div className="form-check form-switch">
-                    <input className="form-check-input" type="checkbox" id="download" onChange={ (event) => {this.enableDownload(event)} } />
-                    <label className="form-check-label" htmlFor="download">Download BPMN models</label>
+                    <input className="form-check-input" type="checkbox" id="downloadModels" onChange={ (event) => {this.enableDownload(event)} } />
+                    <label className="form-check-label" htmlFor="downloadModels">Download BPMN models</label>
                   </div>
               </div>
               <div className="row">

@@ -55,7 +55,8 @@ export default class SensorDialog extends React.Component {
 
   loadSensors() {
       document.querySelector('#'+this.state.loader).style.display = "block";
-
+      let isFloware=localStorage.getItem("isFloWare")=="1"?true:false;
+      let isOntology=localStorage.getItem("isOntology")=="1"?true:false;
       if(this.serviceServerType=="eureka"){
         var url=this.serviceServerUrl+(this.serviceServerUrl.charAt(this.serviceServerUrl.length-1)=="/"?"":"/")+localStorage.getItem("selectedSystem")+"/eureka/apps";
         fetch(url)
@@ -66,19 +67,26 @@ export default class SensorDialog extends React.Component {
               var urls={};
               const devices = microservices.applications.application.reduce((devices,microservice) =>{
      
-                  if(/*microservice.sensor=="1" && */microservice.operations.length>0){
+                  if((isFloware && microservice.operations.length>0) || (!isFloware && microservice.sensor=="1")){
                     var id=microservice.id;
                     var name=microservice.name;
                     var host=microservice.instance[0].hostName;
                     var port=microservice.instance[0].port.$;
                     //urls[name]="http://"+host+":"+port+"/operations"; <-- With microservice architecture
                     //urls[name]="http://"+host+":"+port+"/microservices/sensor/"+id+"/events"; 
-                    urls[name]="http://"+host+":"+port+"/microservices/"+id+"/operations";
+                    let path="sensor/"+id+"/events";
+                    if(isFloware) path=id+"/operation";
+                    if(isOntology) path="sensor/"+id+"/observations";
+                    if(port!=80)
+                        urls[name]="http://"+host+":"+port+"/microservices/"+path;
+                    else
+                      urls[name]="https://"+host+"/microservices/"+path;
                      devices.push({
                         name: name,
                         id: id,
                         floWareSystem: microservice.floWareSystem,
-                        iot:microservice.iot
+                        iot:microservice.iot,
+                        sensor:microservice.sensor
                       });
                   }
                   return devices;
@@ -136,7 +144,8 @@ export default class SensorDialog extends React.Component {
               floWareSystem=device.floWareSystem;
               devices.push(<li key={floWareSystem}>{floWareSystem}</li>);
             }
-            devices.push(<li className="list-group-item" key={device.name+"LI"}><img src="imgs/sensor.png" height="20px"/>&nbsp;&nbsp;&nbsp;<a href="#" onClick={this.addSensor.bind(this,device.name, device.id)} style={style}>{device.name}</a></li>);
+            let image=(device.sensor=="1")?"imgs/sensor.png":"imgs/actuator.png";
+            devices.push(<li className="list-group-item" key={device.name+"LI"}><img src={image} height="20px"/>&nbsp;&nbsp;&nbsp;<a href="#" onClick={this.addSensor.bind(this,device.name, device.id)} style={style}>{device.name}</a></li>);
         });
         
 	  		content=<ul className="list-group">{devices}</ul>;

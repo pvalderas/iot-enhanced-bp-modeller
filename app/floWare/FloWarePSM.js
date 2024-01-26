@@ -193,6 +193,7 @@ export default class FloWarePSM{
           })
           .then(pim => {
             var psm=this.getPSM(pim,models);
+            
            	fetch(url,{
 				 		method:'POST',
 				 		body: JSON.stringify({"id":idPSM, "system":system, "psm":JSON.stringify(psm), "compositions": compositions})
@@ -303,6 +304,29 @@ export default class FloWarePSM{
 				}
 			});
 
+			let indexExtensionElements=model.indexOf("<bpmn:extensionElements>");
+			
+			
+			while(indexExtensionElements!=-1){
+
+				let indexDevice=model.indexOf("name=\"device\"",indexExtensionElements);
+				let indexActor=model.indexOf("stringValue=\""+actor+"\"",indexDevice);
+				let indexEndExtensionElements=model.indexOf("</bpmn:extensionElements>",indexExtensionElements);
+				
+				if(indexActor>indexExtensionElements && indexActor<indexEndExtensionElements){
+
+					let indexOperation=model.indexOf("<camunda:field name=\"operation\"", indexDevice);
+
+					if(indexOperation>indexExtensionElements && indexOperation<indexEndExtensionElements){
+						let indexStringValue=model.indexOf("stringValue=",indexOperation);
+						let indexEndStringValue=model.indexOf("\" ",indexStringValue);
+						operations.push(model.substring(indexStringValue+13,indexEndStringValue));
+						console.log(model.substring(indexStringValue+13,indexEndStringValue));
+					}
+				}
+
+				indexExtensionElements=model.indexOf("<bpmn:extensionElements>",indexEndExtensionElements);
+			}
 		});
 
 		return operations;

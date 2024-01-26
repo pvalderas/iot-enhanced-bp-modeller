@@ -1,11 +1,13 @@
 import React,  { useState } from 'react';
 import { is } from 'bpmn-js/lib/util/ModelUtil';
-import { getDi } from 'bpmn-js/lib/util/ModelUtil';
+//import { getDi } from 'bpmn-js/lib/util/ModelUtil';
 import {showMicroserviceDialog, hideMicroserviceDialog} from '../dialogs/IoTDeviceDialog';
 import {showOperationDialog, hideOperationDialog} from '../dialogs/OperationDialog';
 import {showEventDialog, hideEventDialog} from '../dialogs/EventDialog';
+import {showEventErrorDialog, hideEventErrorDialog} from '../dialogs/EventErrorDialog';
 import {showSensorDialog, hideSensorDialog, loadSensors} from '../dialogs/SensorDialog';
 import {showSystemDialog, hideSystemDialog} from '../dialogs/FloWareSystemDialog';
+import { showMessage } from '../dialogs/MessageDialog';
 
 export default function ElementProperties(props) {
   
@@ -21,6 +23,7 @@ export default function ElementProperties(props) {
 
   let iot=false;
   let iotLane="noiot";
+  let ontology=localStorage.getItem("isOntology")=="1"?true:false;
 
   const activeClass={
     color: "#fff",
@@ -29,7 +32,7 @@ export default function ElementProperties(props) {
   }
   let active={
     noiot:{},
-    new:{},
+    newIoT:{},
     existing:{}
   }
 
@@ -39,9 +42,7 @@ export default function ElementProperties(props) {
   const [condition, setCondition] = useState("");
   const [description, setDescription] = useState("");
  
-  let eventTypeField="data";
-  const [eventType, setEventType] = useState(eventTypeField);
-
+  
   // For Lanes
   const [redraw, setRedraw] = useState(false);
   const [laneName, setLaneName] = useState("");
@@ -49,7 +50,7 @@ export default function ElementProperties(props) {
 
   if(device.length>0) loadSensors();
 
-
+ 
   if(is(element, 'bpmn:Lane')){ 
 
         if(element.businessObject.extensionElements!=null){
@@ -77,9 +78,11 @@ export default function ElementProperties(props) {
         }
 
   }else if(element.businessObject.eventDefinitions && connectedToMessageFlow()){ 
+  	   var eventTypeField="data";
        if(element.businessObject.extensionElements!=null){
 
           element.businessObject.extensionElements.values.forEach(function(field){
+ 
             if(field.name=="eventType"){
               eventTypeField=field.stringValue;
             }
@@ -101,9 +104,9 @@ export default function ElementProperties(props) {
 
   }
 
-  if(eventTypeField!=eventType){
-    setEventType(eventTypeField);
-  }
+  const [eventType, setEventType] = useState(eventTypeField);
+  if(eventTypeField && eventType!=eventTypeField) setEventType(eventTypeField);
+
 
   if(device!=getEventField("device")){
     setDevice(getEventField("device"));
@@ -126,6 +129,11 @@ export default function ElementProperties(props) {
     setLaneName(name);
   }
 
+  function updateEventName(name) {
+    const modeling = modeler.get('modeling');
+    modeling.updateProperties(element, {'name':name});
+  }
+
   function updateOperation(operation) {
     const modeling = modeler.get('modeling');
 
@@ -144,27 +152,37 @@ export default function ElementProperties(props) {
 
   function showEventList(){
     //var sensorID=element.businessObject.name.split(".")[0];
-    var sensorID=document.getElementById('eventDev').value;//element.businessObject.name.substring(1,element.businessObject.name.length-1);
-    console.log(sensorID);
-    showEventDialog(sensorID);
+    if(device){
+    	var sensorID=document.getElementById('eventDev').value;//element.businessObject.name.substring(1,element.businessObject.name.length-1);
+    	showEventDialog(sensorID);
+    }else{
+      showEventErrorDialog("device");
+    }
   }
+
+  function showSensorList(){
+  	if(ontology || element.businessObject.name) showSensorDialog();
+    else showEventErrorDialog("eventName");
+  }
+
   
 
   function showOperationList(){
       
       var IoTDeviceID=element.businessObject.lanes[0].name;
 
-      if(IoTDeviceID!=null){
+      if(IoTDeviceID!=null && IoTDeviceID!=undefined && IoTDeviceID.trim().length>0){
         //if(getDi(element).$parent.stroke)
             showOperationDialog(IoTDeviceID,1);
         /*else
           showOperationDialog(IoTDeviceID);*/
 
       }else{
-        window.showMessage("Error","You must associate an IoT Device to the lane.");
+        showMessage("Error","You must associate an IoT Device to the lane.");
       }
 
   }
+
 
   function showDevicesList(){
       showMicroserviceDialog();
@@ -197,7 +215,7 @@ export default function ElementProperties(props) {
 
         if(iotLane=="noiot"){
           drawInColor(element, "#000000");
-        }else if(iotLane=="new"){
+        }else if(iotLane=="newIoT"){
           drawInColor(element, "#00c5ff"); 
         }else{
           drawInColor(element, "#0000FF");//Managed also when adding the Iot Device
@@ -278,7 +296,7 @@ export default function ElementProperties(props) {
               
               const modeling = modeler.get('modeling');
               modeling.updateLabel(flow, "["+device+"]");
-              console.log(flow);
+      
               drawInColor(flow, "#0000ff");
               drawInColor(flow.target, "#0000ff");
              
@@ -310,7 +328,9 @@ export default function ElementProperties(props) {
                      setDevice(value);
                      setOperation("");
                       break;
-      case "operation": setOperation(value);break;
+      case "operation": setOperation(value);
+                        if(ontology) updateName(value);
+                        break;
       case "condition": setCondition(value);break;
       case "description": setDescription(value);break;
     }
@@ -338,7 +358,7 @@ export default function ElementProperties(props) {
     element.businessObject.extensionElements=extensionElements;
   }
 
-    
+
   return (
 
     <div className="element-properties" key={ element.id }>
@@ -359,16 +379,20 @@ export default function ElementProperties(props) {
               <div className="btn-group btn-group-toggle" data-toggle="buttons" style={{position:"absolute", top:"0px", left:"1%"}}>
                 <label className="btn btn-primary" style={active.noiot} onClick={enableSelection} id="noiot">
                   <input type="radio" name="iotLane" value="noiot" checked={iotLane=="noiot"} onChange={doNothing}/> 
-                  No IoT
+                  Human
                 </label>
-                <label className="btn btn-primary" style={active.new} onClick={enableSelection} id="new" >
-                  <input type="radio" name="iotLane" value="new" checked={iotLane=="new"} onChange={doNothing}/> 
-                  New IoT Device
+
+                <label className="btn btn-primary" style={active.newIoT} onClick={enableSelection} id="newIoT" >
+                  <input type="radio" name="iotLane" value="newIoT" checked={iotLane=="newIoT"} onChange={doNothing}/> 
+                  {(element.parent.businessObject.name && element.parent.businessObject.name=="Software Systems")?"New App":"New IoT Device"}
                 </label>
+
                 <label className="btn btn-primary" style={active.existing} onClick={enableSelection} id="existing">
                   <input type="radio" name="iotLane" value="existing" checked={iotLane=="existing"} onChange={doNothing}/> 
-                  Existing IoT Device
+                  {(element.parent.businessObject.name && element.parent.businessObject.name=="Software Systems")?"Existing App":"Existing IoT Device"}
                 </label>
+
+         
               </div>
             </div>
 
@@ -393,7 +417,7 @@ export default function ElementProperties(props) {
                 </div>
             </div>}
 
-            {iotLane=="new" && <div className="row" style={{width:"100%"}}>
+            {iotLane=="newIoT" && <div className="row" style={{width:"100%"}}>
                 <div className="offset-1 col-3" style={{marginTop:"20px"}}>
                     <label className="col-form-label">IoT Device Name</label>
                 </div>
@@ -401,6 +425,8 @@ export default function ElementProperties(props) {
                     <input id="laneName" className="form-control" value={laneName} 
                      onChange={ (event) => {updateName(event.target.value)} } style={{width:"100%"}}/>
                 </div>
+                {
+                (element.parent.businessObject.name && element.parent.businessObject.name!="Software Systems") && 
                 <div className="col-3">
                   <div className="form-check"  style={{justifyContent:"left"}}>
                     <input className="form-check-input" type="radio" name="deviceType" id="sensorRadioOpt" value="sensor" checked={sensor} onChange={toggleSensor}/>
@@ -411,6 +437,7 @@ export default function ElementProperties(props) {
                     <b>Actuator</b>
                   </div>
                 </div>
+                }
             </div>}
          </form>
       }
@@ -435,7 +462,7 @@ export default function ElementProperties(props) {
               <input type="radio" name="eventType" value="complex" checked={eventType=="complex"} onChange={(event) => {eventTypeHandler(event.target)} }/> 
                   Complex
 
-              {eventType=="data" &&
+              {eventType=="data" && !ontology &&
               <div className="row" style={{width:"100%", marginTop:"1px"}}>
                  <div className="mb-3 col-4" style={{paddingRight:"0px"}}>
                   <label htmlFor="eventName" className="form-label" style={{display:"inherit"}}>Name</label>
@@ -448,9 +475,32 @@ export default function ElementProperties(props) {
                     <div className="input-group" >
                       <input type="text" className="form-control" id="eventDev" value={device} disabled={true} onChange={ (event) => {
                     setEventField("device", event.target.value)  } }/>
-                      <a className="btn btn-outline-secondary" id="addDev" onClick={ showSensorDialog }>+</a>
+                      <a className="btn btn-outline-secondary" id="addDev" onClick={ showSensorList }>+</a>
                     </div>
                   </div>
+              </div>
+              }
+
+              {eventType=="data" && ontology &&
+              <div className="row" style={{width:"100%", marginTop:"1px"}}>
+                 <div className="mb-3 col-6" style={{paddingRight:"0px"}}>
+                    <label htmlFor="eventDev" className="form-label" style={{display:"inherit"}}>Device</label>
+                    <div className="input-group" >
+                      <input type="text" className="form-control" id="eventDev" value={device} disabled={true} onChange={ (event) => {
+                    setEventField("device", event.target.value)  }} style={{width:"40%"}}/>
+                      <a className="btn btn-outline-secondary" id="addDev" onClick={ showSensorList }>+</a>
+                    </div>
+                  </div>
+
+                 <div className="mb-3 col-6" style={{paddingRight:"0px"}}>
+                  <label htmlFor="eventOp" className="form-label" style={{display:"inherit"}}>Observation</label>
+                  <div className="input-group" >
+                      <input type="text" className="form-control" id="eventOp" value={operation} disabled={true} onChange={ (event) => {
+                    setEventField("operation", event.target.value) } } style={{width:"40%"}}/>
+                      <a className="btn btn-outline-secondary" id="addDev" onClick={ showEventList }>+</a>
+                    </div>
+                </div>
+                 
               </div>
               }
 
@@ -459,7 +509,7 @@ export default function ElementProperties(props) {
                 <div className="mb-3 col-2" style={{paddingRight:"0px"}}>
                   <label htmlFor="eventName" className="form-label" style={{display:"inherit"}}>Name</label>
                   <input id="eventName" className="form-control" value={ element.businessObject.name || '' } onChange={ (event) => {
-                  updateName(event.target.value)  } } style={{width:"100%"}}/>
+                  updateEventName(event.target.value)  } } style={{width:"100%"}}/>
                 </div>
                 
                 <div className="mb-3 col-4" style={{paddingRight:"0px"}}>
@@ -467,7 +517,7 @@ export default function ElementProperties(props) {
                   <div className="input-group" >
                     <input type="text" className="form-control" id="eventDev" value={device} disabled={true} onChange={ (event) => {
                   setEventField("device", event.target.value)  } }/>
-                    <a className="btn btn-outline-secondary" id="addDev" onClick={ showSensorDialog }>+</a>
+                    <a className="btn btn-outline-secondary" id="addDev" onClick={ showSensorList }>+</a>
                   </div>
                 </div>
 

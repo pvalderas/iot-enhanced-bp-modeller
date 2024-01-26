@@ -3,19 +3,24 @@ import MenuOption from './MenuOption.js';
 import defaultExample from '../DistributionCenter.bpmn';
 import newModel from '../NewModel.bpmn';
 import BPMN2Java from '../bpmn/BPMN2Java.js';
+import BPMN2DTDL from '../bpmn/BPMN2DTDL.js';
 import FloWarePSM from '../floWare/FloWarePSM.js';
 import {showConfig,defaultExampleConfig} from '../dialogs/ConfigDialog.js';
 import {showDownloadDialog} from '../dialogs/DownloadDialog.js';
 import {showUploadDialog} from '../dialogs/UploadDialog.js';
 import {showRemoteDialog} from '../dialogs/RemoteDialog.js';
 import {showFloWareDialog} from '../dialogs/FloWareDialog.js';
+import {showOntologyDialog} from '../dialogs/OntologyDialog.js';
 import {showSendSystemModelsDialog} from '../dialogs/SendSystemModelsDialog';
 import {showInstanceDialog, hideInstanceDialog} from '../dialogs/InstanceDialog';
-import { is } from "bpmn-js/lib/util/ModelUtil";
 
 
-export var updateMenuFloWareOption = function(){
-    window.menu.updateFloWare();
+export var updateMenuRedLabel = function(){
+    window.menu.updateMenuRedLabel();
+};
+
+export var updateMenuTitle = function(title){
+    window.menu.updateMenuTitle(title);
 };
 
 export var newComposition = function(){
@@ -31,20 +36,24 @@ export default class Menu extends React.Component {
 		this.modeler=this.props.modeler;
 		
 		this.bpmn2Java=new BPMN2Java(this.modeler);
+		this.bpmn2DTDL=new BPMN2DTDL(this.props.modeler);
 		this.floWarePSM=new FloWarePSM(this.modeler);
 		this.bpmnManager=this.props.bpmnManager;
 
 		this.state = {
 			displayFloWare:localStorage.getItem("isFloWare")=="1"?true:false,
+			displayOntology:localStorage.getItem("isOntology")=="1"?true:false,
 			simulation:false,
 			developmentType:"Top-Down",
-			propertyPanel: false
+			propertyPanel: false,
+			processTitle:""
 		}
 
-		this.updateFloWare=this.updateFloWare.bind(this);
+		this.updateMenuRedLabel=this.updateMenuRedLabel.bind(this);
 		this.newComposition=this.newComposition.bind(this);
 		this.loadDefaultExample=this.loadDefaultExample.bind(this);
 		this.generateJava=this.generateJava.bind(this);
+		this.generateDTDL=this.generateDTDL.bind(this);
 		this.startFloWarePSMDownload=this.startFloWarePSMDownload.bind(this);
 		this.zoomin=this.zoomin.bind(this);
 		this.zoomout=this.zoomout.bind(this);
@@ -53,14 +62,24 @@ export default class Menu extends React.Component {
 		this.togglePropertyPanel=this.togglePropertyPanel.bind(this);
 	}
 
-	updateFloWare(){
+	updateMenuRedLabel(){
 
 		if(localStorage.getItem("isFloWare")=="1"){
 				this.setState({displayFloWare: true});
 		}else{
 			this.setState({displayFloWare: false});
 		}
+
+		if(localStorage.getItem("isOntology")=="1"){
+				this.setState({displayOntology: true});
+		}else{
+			this.setState({displayOntology: false});
+		}
 	}
+
+	updateMenuTitle(title){
+		this.setState({processTitle: title});
+	}	
 
 	newComposition(){
 		this.modeler.importXML(newModel);
@@ -79,7 +98,9 @@ export default class Menu extends React.Component {
 	}
 
 	generateDTDL(){
-		
+		if(this.bpmnManager.checkBPMN()){
+	        this.bpmn2DTDL.downloadDTDL();
+	    }
 	}
 
 	startFloWarePSMDownload(){
@@ -108,9 +129,16 @@ export default class Menu extends React.Component {
 		  })*/
 
 		const simulationSupport = this.props.modeler.get('simulationSupport');
+		const simulationTrace = this.props.modeler.get('simulationTrace');
 		simulationSupport.toggleSimulation(!this.state.simulation);
 		this.setState({simulation:!this.state.simulation})
 		//simulationSupport.triggerElement(startEvent[0].id);
+
+		simulationTrace._log=function(event){
+			console.log(event);
+		}
+
+		simulationTrace.start();
 
 		if(this.state.simulation) document.getElementById("bottom-view").style.display="flex";
 		else document.getElementById("bottom-view").style.display="none";
@@ -177,9 +205,15 @@ export default class Menu extends React.Component {
 
 
 		// System Menu
+		
+		/*const ontologyOptions = [
+			{id:"sosa",label:"SOSA",click:showOntologyDialog},
+			{id:"saref",label:"SAREF",click:showOntologyDialog}
+		]*/
 		const systemOptions = [
-					{id:"config",label:"Select an existing system",click:showConfig},
-					{id:"floWare",label:"Create an IoT system FloWare",click:showFloWareDialog}
+			{id:"config",label:"Select an existing system",click:showConfig},
+			{id:"floWare",label:"Create an IoT system from FloWare",click:showFloWareDialog},
+			{id:"ontology",label:"Create an IoT system from an Ontology",click:showOntologyDialog}
 		];
 		const systemMenu=<MenuOption label="IoT System" id="system" items={systemOptions}/>;
 
@@ -204,9 +238,12 @@ export default class Menu extends React.Component {
 					</ul>
 					
 				</div>
-				<div id="floWareIcon" style={{position:"absolute", right:"20px",top:"5px", color:"red", display:this.state.displayFloWare?"inline":"none"}}>FloWare</div>
-				<div id="floWareIcon" style={{position:"absolute", right:"20px",top:"25px", color:"blue"}}><a href="#" onClick={this.togglePropertyPanel}>{this.state.propertyPanel?"Hide Property Panel":"Show Property Panel"}</a></div>
+				<div id="floWareLabel" style={{position:"absolute", right:"20px",top:"5px", color:"red", display:this.state.displayFloWare?"inline":"none"}}>FloWare</div>
+				<div id="ontologyLabel" style={{position:"absolute", right:"20px",top:"5px", color:"red", display:this.state.displayOntology?"inline":"none"}}>Ontology</div>
+				<div id="showPropLink" style={{position:"absolute", right:"20px",top:"25px", color:"blue"}}><a href="#" onClick={this.togglePropertyPanel}>{this.state.propertyPanel?"Hide BPMN Property Panel":"Show BPMN Property Panel"}</a></div>
 				
+				<div id="processTitle" style={{position:"absolute", margin:"0 45%", top:"15px", color:"darkgrey"}}>{this.state.processTitle}</div>
+
 				{/*<div id="DevelopmentIcon" style={{position:"absolute", right:"20px",color:"blue", display:this.state.displayFloWare==false?"inline":"none"}}>{this.state.developmentType}</div>*/}
 			</div>
 		);

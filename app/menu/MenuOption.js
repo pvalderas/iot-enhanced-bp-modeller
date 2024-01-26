@@ -10,10 +10,11 @@ export default class MenuOption extends Component {
 	  	if(this.props.items!=undefined){
 	  		const subItems=this.props.items.map((item, index) => {
 
-	  					if(item.id=="separator")
+	  					if(item.id=="separator"){
 	  						return (<div className="dropdown-divider" key={index} id={index}></div>)
-	  					else
-		        			return (<a className="dropdown-item" href="#" key={item.id} id={item.id} onClick={item.click}>{item.label}</a>)
+						}else if(item.click!=undefined){
+							return (<a className="dropdown-item" href="#" key={item.id} id={item.id} onClick={item.click}>{item.label}</a>)
+						}	
 		        	}
 		    );
 		    return(

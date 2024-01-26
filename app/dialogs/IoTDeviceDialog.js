@@ -36,6 +36,8 @@ export default class IoTDeviceDialog extends React.Component {
   }
 
   show(){
+      if(localStorage.getItem("isOntology")==1) this.setState({title:"SAREF IoT Devices"});
+
   //  if(sessionStorage.getItem("urls")==null){
       this.serviceServerUrl=localStorage.getItem("serviceServerUrl");
       this.serviceServerType=localStorage.getItem("serviceServerType");
@@ -103,8 +105,11 @@ export default class IoTDeviceDialog extends React.Component {
                     var host=microservice.instance[0].hostName;
                     var port=microservice.instance[0].port.$;
                      //urls[name]="http://"+host+":"+port+"/operations"; <-- With microservice architecture
-                     urls[name]="http://"+host+":"+port+"/microservices/"+id+"/operations"; //<-- With PHP emulator
-                     devices.push({
+                     if(port!=80)
+                        urls[name]="http://"+host+":"+port+"/microservices/"+id+"/operations"; //<-- With PHP emulator
+                     else
+                     urls[name]="https://"+host+"/microservices/"+id+"/operations";
+                      devices.push({
                         name: name,
                         iot:microservice.iot,
                         sensor:microservice.sensor

@@ -10,11 +10,13 @@ import SendCompositionDialog from "./dialogs/SendCompositionDialog.js";
 import DownloadDialog from "./dialogs/DownloadDialog.js";
 import UploadDialog from "./dialogs/UploadDialog.js";
 import FloWareDialog from "./dialogs/FloWareDialog.js";
+import OntologyDialog from "./dialogs/OntologyDialog.js";
 import RemoteDialog from "./dialogs/RemoteDialog.js";
 import IoTDeviceDialog from "./dialogs/IoTDeviceDialog.js";
 import OperationDialog from "./dialogs/OperationDialog.js";
 import SensorDialog from "./dialogs/SensorDialog.js";
 import EventDialog from "./dialogs/EventDialog.js";
+import EventErrorDialog from "./dialogs/EventErrorDialog.js";
 import ConfigDialog from "./dialogs/ConfigDialog.js";
 import MessageDialog from "./dialogs/MessageDialog.js";
 import BPMNManager from "./bpmn/BPMNManager.js";
@@ -59,9 +61,11 @@ const $iotDeviceDialogContainer = document.querySelector('#iot-device-dialog-con
 const $operationDialogContainer = document.querySelector('#operation-dialog-container');
 const $sensorDialogContainer = document.querySelector('#sensor-dialog-container');
 const $eventDialogContainer = document.querySelector('#event-dialog-container');
+const $eventErrorDialogContainer = document.querySelector('#event-error-dialog-container');
 const $messageDialogContainer = document.querySelector('#message-dialog-container');
 const $configDialogContainer = document.querySelector('#config-dialog-container');
 const $floWareDialogContainer = document.querySelector('#floWare-dialog-container');
+const $ontologyDialogContainer = document.querySelector('#ontology-dialog-container');
 const $floWareSystemDialogContainer = document.querySelector('#floWareSystems-dialog-container');
 const $instanceDialogContainer = document.querySelector('#instances-dialog-container');
 const $overlayContainer = document.querySelector('#overlay-container');
@@ -170,6 +174,11 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
+  <OntologyDialog />,
+  $ontologyDialogContainer
+);
+
+ReactDOM.render(
   <RemoteDialog modeler={modeler} />,
   $remoteDialogContainer
 );
@@ -192,6 +201,11 @@ ReactDOM.render(
 ReactDOM.render(
   <EventDialog modeler={modeler}/>,
   $eventDialogContainer
+);
+
+ReactDOM.render(
+  <EventErrorDialog id="eventError"/>,
+  $eventErrorDialogContainer
 );
 
 ReactDOM.render(

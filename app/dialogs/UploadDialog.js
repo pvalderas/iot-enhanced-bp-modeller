@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import './UploadDialog.css';
-import {updateMenuFloWareOption} from "../menu/Menu.js";
+import {updateMenuRedLabel} from "../menu/Menu.js";
 import {updateDownloadButtonFloWareOption} from "../properties-panel/DownloadButton.js";
 import { showMessage } from '../dialogs/MessageDialog';
 
@@ -54,7 +54,7 @@ export default class UploadDialog extends React.Component {
       localStorage.setItem("selectedSystem",system);
       localStorage.setItem("isFloWare",isFloWare);
 
-      updateMenuFloWareOption();
+      updateMenuRedLabel();
       updateDownloadButtonFloWareOption();
     }else{
        showMessage("Attention","This BPMN model has not been created with this tool or is associated to a system that is no longer registered in the server");

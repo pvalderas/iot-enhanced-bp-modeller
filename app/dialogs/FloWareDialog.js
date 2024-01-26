@@ -3,7 +3,7 @@ import React from 'react';
 import './UploadDialog.css';
 import { loadIoTDevicesFromFloWare } from './IoTDeviceDialog';
 import { systemReload } from './ConfigDialog';
-import { showMessage } from '../dialogs/MessageDialog';
+import { showMessage } from './MessageDialog';
 import {MQTT, HTTP} from '../floWare/FloWareConfig.js'
 import FloWarePIM from '../floWare/FloWarePIM.js'
 import './loader.css';
@@ -23,7 +23,7 @@ export default class FloWareDialog extends React.Component {
 
     this.fileReader=new FileReader();
 
-    this.url="http://pedvalar.webs.upv.es/microservicesEmu/insertFloWareSystem.php";
+    this.url="https://pedvalar.webs.upv.es/microservicesEmu/insertFloWareSystem.php";
 
     this.fileRead=this.fileRead.bind(this);
     this.close=this.close.bind(this);
