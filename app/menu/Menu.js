@@ -11,6 +11,7 @@ import {showUploadDialog} from '../dialogs/UploadDialog.js';
 import {showRemoteDialog} from '../dialogs/RemoteDialog.js';
 import {showFloWareDialog} from '../dialogs/FloWareDialog.js';
 import {showOntologyDialog} from '../dialogs/OntologyDialog.js';
+import {showWoTDialog} from '../dialogs/WoTDialog.js';
 import {showSendSystemModelsDialog} from '../dialogs/SendSystemModelsDialog';
 import {showInstanceDialog, hideInstanceDialog} from '../dialogs/InstanceDialog';
 
@@ -42,7 +43,8 @@ export default class Menu extends React.Component {
 
 		this.state = {
 			displayFloWare:localStorage.getItem("isFloWare")=="1"?true:false,
-			displayOntology:localStorage.getItem("isOntology")=="1"?true:false,
+			displayOntology:localStorage.getItem("isOntology")!="0"?true:false,
+			displayWoT:localStorage.getItem("isWoT")!="0"?true:false,
 			simulation:false,
 			developmentType:"Top-Down",
 			propertyPanel: false,
@@ -70,10 +72,16 @@ export default class Menu extends React.Component {
 			this.setState({displayFloWare: false});
 		}
 
-		if(localStorage.getItem("isOntology")=="1"){
+		if(localStorage.getItem("isOntology")!="0"){
 				this.setState({displayOntology: true});
 		}else{
 			this.setState({displayOntology: false});
+		}
+
+		if(localStorage.getItem("isWoT")!="0"){
+				this.setState({displayWoT: true});
+		}else{
+			this.setState({displayWoT: false});
 		}
 	}
 
@@ -212,8 +220,11 @@ export default class Menu extends React.Component {
 		]*/
 		const systemOptions = [
 			{id:"config",label:"Select an existing system",click:showConfig},
+			{id:"separator"},
 			{id:"floWare",label:"Create an IoT system from FloWare",click:showFloWareDialog},
-			{id:"ontology",label:"Create an IoT system from an Ontology",click:showOntologyDialog}
+			{id:"ontology",label:"Create an IoT system from an Ontology",click:showOntologyDialog},
+			{id:"separator"},
+			{id:"wot",label:"Load Web of Thing descriptions",click:showWoTDialog}
 		];
 		const systemMenu=<MenuOption label="IoT System" id="system" items={systemOptions}/>;
 
@@ -240,6 +251,7 @@ export default class Menu extends React.Component {
 				</div>
 				<div id="floWareLabel" style={{position:"absolute", right:"20px",top:"5px", color:"red", display:this.state.displayFloWare?"inline":"none"}}>FloWare</div>
 				<div id="ontologyLabel" style={{position:"absolute", right:"20px",top:"5px", color:"red", display:this.state.displayOntology?"inline":"none"}}>Ontology</div>
+				<div id="wotLabel" style={{position:"absolute", right:"20px",top:"5px", color:"red", display:this.state.displayWoT?"inline":"none"}}>WoT</div>
 				<div id="showPropLink" style={{position:"absolute", right:"20px",top:"25px", color:"blue"}}><a href="#" onClick={this.togglePropertyPanel}>{this.state.propertyPanel?"Hide BPMN Property Panel":"Show BPMN Property Panel"}</a></div>
 				
 				<div id="processTitle" style={{position:"absolute", margin:"0 45%", top:"15px", color:"darkgrey"}}>{this.state.processTitle}</div>

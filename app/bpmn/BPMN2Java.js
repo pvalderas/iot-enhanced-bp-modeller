@@ -62,7 +62,8 @@ export default class BPMN2Java{
 					actuatorClass+='){\r\n';
 					actuatorClass+='		'+operation.name.charAt(0).toUpperCase()+operation.name.substring(1)+'Result result = null;\r\n';
 					actuatorClass+='		//Code to interact with the IoT Device\r\n';
-					actuatorClass+='		return result.toString()\r\n';
+					actuatorClass+='		HTTPClient.get("'+operation.url+'");\r\n';
+					actuatorClass+='		return result.toString();\r\n';
 					actuatorClass+='	}\r\n\r\n';
 				});
 				actuatorClass+='}';
@@ -134,7 +135,7 @@ export default class BPMN2Java{
 
 			azureClass+='}';
 
-			zip.file("AzureInstance.java", azureClass);
+			//zip.file("AzureInstance.java", azureClass);
 			
 			zip.generateAsync({type: "blob"}).then(function(content) {
 			  FileSaver.saveAs(content, localStorage.getItem("selectedSystem")+".zip");
@@ -157,34 +158,94 @@ export default class BPMN2Java{
 		let IoTDevices=[];
 		let _this=this;
 
+						function addDevice(lane, laneName){
+							let operations=[];
+							jQuery.each(lane.flowNodeRef,function(index, element){
+								if(element.$type=="bpmn:ServiceTask" && element.name && element.name.length>0){
+									let url=element.extensionElements.values.filter((field) => field.name == "url");
+									
+									let exists=operations.some(function(op){
+										return op.name==element.name;
+									});
+									if(!exists){
+										operations.push({
+											name:element.name,
+											inputs: _this.dataObject.getInputs(element),
+											outputs: _this.dataObject.getOutputs(element),
+											url: url.length>0?url[0].stringValue:null
+										});
+									}
+									
+								}
+							});
+							IoTDevices.push({
+								"name":laneName,
+								"operations":operations
+							})
+						}
+
+						const addWoT = async (laneName) =>{
+
+							let response=await fetch("https://pedvalar.webs.upv.es/microservicesEmu/wot/getWoTDescription.php?name="+laneName.replaceAll(" ","_"));
+ 							let wot=await response.json();
+
+							let operations=[];
+
+							Object.keys(wot.actions).forEach(function(actionName){
+								let url=wot.actions[actionName].forms.filter((form) => form.href!=undefined);
+								if(url[0]) url=url[0].href;
+								operations.push({
+									name:actionName,
+									inputs: [],
+									outputs: [],
+									url: url
+								});
+							});
+
+							Object.keys(wot.properties).forEach(function(propName){
+								let url=wot.properties[propName].forms.filter((form) => form.href!=undefined);
+								if(url[0]) url=url[0].href;
+								operations.push({
+									name:"set"+propName.charAt(0).toUpperCase()+propName.slice(1),
+									inputs: [],
+									outputs: [],
+									url: url+"/set"
+								});
+
+								operations.push({
+									name:"get"+propName.charAt(0).toUpperCase()+propName.slice(1),
+									inputs: [],
+									outputs: [],
+									url: url+"/get"
+								});
+							});
+
+
+							IoTDevices.push({
+								"name":wot.title,
+								"operations":operations
+							})
+
+						}
+
+		let llamadas=[];
 		definitions.rootElements.forEach(function(element,index){
 				if (element.$type=="bpmn:Collaboration"){
+					
 					element.participants.forEach(function(participant,index){
 					
 						if(participant.name!="PHYSICAL WORLD" && participant.processRef){
 							jQuery.each(participant.processRef.laneSets[0].lanes,function(index, lane){
 								let laneName=lane.name.replaceAll("[","").replaceAll("]","");
 								if(microservices.indexOf(laneName)>=0){
-									var operations=[];
-									jQuery.each(lane.flowNodeRef,function(index, element){
-										if(element.$type=="bpmn:ServiceTask" && element.name && element.name.length>0){
-											let exists=operations.some(function(op){
-												return op.name==element.name;
-											});
-											if(!exists){
-												operations.push({
-													name:element.name,
-													inputs: _this.dataObject.getInputs(element),
-													outputs: _this.dataObject.getOutputs(element)
-												});
-											}
-											
-										}
-									});
-									IoTDevices.push({
-										"name":laneName,
-										"operations":operations
-									})
+
+ 										if(localStorage.getItem("isWoT")==1){
+ 											llamadas.push(addWoT(laneName));
+ 										}else{
+ 											addDevice(lane,laneName);
+ 										}
+ 
+									
 								}
 							});
 						}
@@ -192,7 +253,8 @@ export default class BPMN2Java{
 				}
 		});
 
-		this.generateJava(IoTDevices);
+		if(localStorage.getItem("isWoT")==1) Promise.all(llamadas).then(reponse=>{this.generateJava(IoTDevices);})
+		else this.generateJava(IoTDevices);
 	}
 }
 

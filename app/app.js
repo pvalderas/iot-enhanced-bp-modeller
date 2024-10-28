@@ -11,6 +11,7 @@ import DownloadDialog from "./dialogs/DownloadDialog.js";
 import UploadDialog from "./dialogs/UploadDialog.js";
 import FloWareDialog from "./dialogs/FloWareDialog.js";
 import OntologyDialog from "./dialogs/OntologyDialog.js";
+import WoTDialog from "./dialogs/WoTDialog.js";
 import RemoteDialog from "./dialogs/RemoteDialog.js";
 import IoTDeviceDialog from "./dialogs/IoTDeviceDialog.js";
 import OperationDialog from "./dialogs/OperationDialog.js";
@@ -66,6 +67,7 @@ const $messageDialogContainer = document.querySelector('#message-dialog-containe
 const $configDialogContainer = document.querySelector('#config-dialog-container');
 const $floWareDialogContainer = document.querySelector('#floWare-dialog-container');
 const $ontologyDialogContainer = document.querySelector('#ontology-dialog-container');
+const $wotDialogContainer = document.querySelector('#wot-dialog-container');
 const $floWareSystemDialogContainer = document.querySelector('#floWareSystems-dialog-container');
 const $instanceDialogContainer = document.querySelector('#instances-dialog-container');
 const $overlayContainer = document.querySelector('#overlay-container');
@@ -176,6 +178,11 @@ ReactDOM.render(
 ReactDOM.render(
   <OntologyDialog />,
   $ontologyDialogContainer
+);
+
+ReactDOM.render(
+  <WoTDialog />,
+  $wotDialogContainer
 );
 
 ReactDOM.render(

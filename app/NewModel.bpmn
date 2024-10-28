@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_0u9cldd" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.5.0">
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="Definitions_0u9cldd" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
   <bpmn:collaboration id="Collaboration_0d1mqls">
     <bpmn:participant id="Participant_119mtor" name="PHYSICAL WORLD" />
     <bpmn:participant id="Participant_17s2oaa" name="" processRef="Process_1boiacn" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_1boiacn">
+  <bpmn:process id="Process_1boiacn" isExecutable="false">
     <bpmn:laneSet id="LaneSet_0uzdaco">
-      <bpmn:lane id="Lane_0lttppe" />
-      <bpmn:lane id="Lane_1kp4331" >
-          <bpmn:flowNodeRef>Event_0itwh8h</bpmn:flowNodeRef>
-          <bpmn:flowNodeRef>Event_0roeruo</bpmn:flowNodeRef>
+      <bpmn:lane id="Lane_1kp4331">
+        <bpmn:flowNodeRef>Event_0itwh8h</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0roeruo</bpmn:flowNodeRef>
       </bpmn:lane>
+      <bpmn:lane id="Lane_0lttppe" />
     </bpmn:laneSet>
-    <bpmn:startEvent id="Event_0itwh8h" />
     <bpmn:endEvent id="Event_0roeruo" />
+    <bpmn:startEvent id="Event_0itwh8h" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0d1mqls">
-      <bpmndi:BPMNShape id="Participant_1y45dt6_di" bpmnElement="Participant_119mtor" isHorizontal="true">
+      <bpmndi:BPMNShape id="Participant_1y45dt6_di" bpmnElement="Participant_119mtor" isHorizontal="true" bioc:stroke="#0000ff" color:border-color="#0000ff">
         <dc:Bounds x="160" y="107" width="1028" height="60" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_17s2oaa_di" bpmnElement="Participant_17s2oaa" isHorizontal="true">

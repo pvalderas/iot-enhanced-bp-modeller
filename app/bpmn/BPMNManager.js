@@ -258,7 +258,7 @@ export default class BPMNManager{
 									delete node['class'];
 									delete node['topic'];
 									delete node['type'];
-									if(localStorage.getItem("isOntology")=="1"){
+									if(localStorage.getItem("isOntology")=="2"){//2==SAREF Ontology
 										//node.$attrs['camunda:class']="es.upv.pros.pvalderas.saref.command.publisher.camunda.CommandPublisher";
 										node.$attrs['camunda:type']="external";
 										node.$attrs['camunda:topic']="command"; 
@@ -276,7 +276,10 @@ export default class BPMNManager{
 										node.extensionElements=extensionElements;
 
 										
-									}else{
+									}else if(localStorage.getItem("isWoT")=="1"){
+										node.$attrs['camunda:class']="es.upv.pros.pvalderas.bpcontroller.server.bpmn.WoTServiceClass";
+									}
+									else{
 	                                    node.$attrs['camunda:class']="es.upv.pros.pvalderas.bpcontroller.server.bpmn.ServiceClass";
 									}
 									break;
@@ -363,9 +366,11 @@ export default class BPMNManager{
 					var camundaNs = 'http://camunda.org/schema/1.0/bpmn';
 				    var field1=moddle.createAny('camunda:field',camundaNs, {name:"system", stringValue:localStorage.getItem("selectedSystem")});
 				    var field2=moddle.createAny('camunda:field',camundaNs, {name:"isFloWare", stringValue:localStorage.getItem("isFloWare")});
+				    var field3=moddle.createAny('camunda:field',camundaNs, {name:"isOntology", stringValue:localStorage.getItem("isOntology")});
 
 				    extensionElements.get('values').push(field1);
 				    extensionElements.get('values').push(field2);
+				    extensionElements.get('values').push(field3);
 
 				    participant.extensionElements=extensionElements;
 				}

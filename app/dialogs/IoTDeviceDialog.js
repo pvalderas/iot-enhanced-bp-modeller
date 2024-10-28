@@ -108,8 +108,9 @@ export default class IoTDeviceDialog extends React.Component {
                      if(port!=80)
                         urls[name]="http://"+host+":"+port+"/microservices/"+id+"/operations"; //<-- With PHP emulator
                      else
-                     urls[name]="https://"+host+"/microservices/"+id+"/operations";
-                      devices.push({
+                        urls[name]="https://"+host+"/microservices/"+id+"/operations";
+                      
+                    devices.push({
                         name: name,
                         iot:microservice.iot,
                         sensor:microservice.sensor

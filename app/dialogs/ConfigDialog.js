@@ -129,6 +129,7 @@ export default class ConfigDialog extends React.Component {
        localStorage.setItem("selectedSystem", this.state.iotSystems[this.state.selectedIoTSystem].id);
        localStorage.setItem("isFloWare", this.state.iotSystems[this.state.selectedIoTSystem].isFloWare);
        localStorage.setItem("isOntology", this.state.iotSystems[this.state.selectedIoTSystem].isOntology);
+       localStorage.setItem("isWoT", this.state.iotSystems[this.state.selectedIoTSystem].isWoT);
        this.updateFloWareElements();
     }
 
@@ -205,7 +206,7 @@ export default class ConfigDialog extends React.Component {
     };
 
     const systems=this.state.iotSystems.map((system, index) =>
-         <option key={"system"+system.id} value={index}>{system.name}</option>
+         <option key={"system"+system.id} value={index}>{system.name.indexOf("WoT")>=0?"["+system.name+"]":system.name}</option>
     );
     var registryUrl="";
     var placeHolderRegistryUrl="";

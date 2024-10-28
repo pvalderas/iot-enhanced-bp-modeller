@@ -81,14 +81,27 @@ export default class UploadDialog extends React.Component {
           .then(microservices => {
               var urls={};
               const devices = microservices.applications.application.reduce((devices,microservice) =>{
+                if(microservice.operations.length>0){
                   var id=microservice.id;
                   var name=microservice.name;
                   var host=microservice.instance[0].hostName;
                   var port=microservice.instance[0].port.$;
+                  //urls[name]="http://"+host+":"+port+"/operations"; <-- With microservice architecture
+                  if(port!=80)
+                    urls[name]="http://"+host+":"+port+"/microservices/"+id+"/operations"; //<-- With PHP emulator
+                  else
+                    urls[name]="https://"+host+"/microservices/"+id+"/operations";
+                  
+                  devices.push({
+                    name: name,
+                    iot:microservice.iot,
+                    sensor:microservice.sensor
+                  });
                    //urls[name]="http://"+host+":"+port+"/operations"; <-- With microservice architecture
-                   urls[name]="http://"+host+":"+port+"/microservices/"+id+"/operations"; //<-- With PHP emulator
-                   devices.push(name);
-                  return devices;
+                   //urls[name]="https://"+host+":"+port+"/microservices/"+id+"/operations"; //<-- With PHP emulator
+                   //devices.push(name);
+                }
+                return devices;
               }, []);
               sessionStorage.setItem("urls",JSON.stringify(urls));
           })

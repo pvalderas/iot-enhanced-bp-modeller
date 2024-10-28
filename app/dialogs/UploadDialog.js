@@ -32,15 +32,18 @@ export default class UploadDialog extends React.Component {
     //localStorage.setItem("selectedSystem",system);
     //localStorage.setItem("isFloWare",isFloWare);
 
-    var system, isFloWare;
+    var system, isFloWare, isOntology;
     const definitions=this.modeler.get('canvas').getRootElement().businessObject.$parent;
     jQuery.each(definitions.rootElements, function(index, element){
         if (element.$type=="bpmn:Collaboration"){
           jQuery.each(element.participants, function(index, participant){
             if(participant.name!="PHYSICAL WORLD" && participant.extensionElements){
                 jQuery.each(participant.extensionElements.values, function(index, field){
-                  if(field.name=="system") system=field.stringValue;
-                  else isFloWare= field.stringValue;
+                  switch(field.name){
+                    case "system": system=field.stringValue;break;
+                    case "isFloWare": isFloWare= field.stringValue; break;
+                    case "isOntology": isOntology= field.stringValue; break;
+                  }
                 });
             }
           });
@@ -53,6 +56,7 @@ export default class UploadDialog extends React.Component {
     if(iotSystem!="-1"){ // The BPMN Model is associated to an exising system
       localStorage.setItem("selectedSystem",system);
       localStorage.setItem("isFloWare",isFloWare);
+      localStorage.setItem("isOntology",isOntology);
 
       updateMenuRedLabel();
       updateDownloadButtonFloWareOption();

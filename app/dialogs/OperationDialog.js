@@ -39,7 +39,7 @@ export default class OperationDialog extends React.Component {
     if(device!==this.state.device){
       this.loadOperations(device);
     }
-    if(localStorage.getItem("isOntology")==1) this.setState({title:"SAREF Functions"});
+    if(localStorage.getItem("isOntology")=="2") this.setState({title:"SAREF Functions"});
     else if(iot==1) this.setState({ title: "IoT Operations" });
     else this.setState({ title: "Software App Operations" });
     document.getElementById(this.state.id).style.display = "block";
@@ -68,7 +68,7 @@ export default class OperationDialog extends React.Component {
   }
 
 
-  addOperation(name, url, method){
+  addOperation(name, url, method, path){
 
     let element=document.querySelector('#propertyValue');
     element.value=name;
@@ -97,6 +97,10 @@ export default class OperationDialog extends React.Component {
     else{
       field1=moddle.createAny('camunda:field',camundaNs, {name:"microservice", stringValue:iotDevice});
       field2=moddle.createAny('camunda:field',camundaNs, {name:"operation", stringValue:name});
+      if(localStorage.getItem("isWoT")=="1"){
+          let field3=moddle.createAny('camunda:field',camundaNs, {name:"url", stringValue:path});
+          extensionElements.get('values').push(field3);
+      }
     }
 
     extensionElements.get('values').push(field1);
@@ -133,7 +137,7 @@ export default class OperationDialog extends React.Component {
                 color:"blue"
               }
 	  		const operations = this.state.operations.map(operation => 
-	  			<li key={operation.ID} className="list-group-item"><a href="#" onClick={this.addOperation.bind(this,operation.ID,operation.URL,operation.METHOD)} style={style}>{operation.ID}</a></li>
+	  			<li key={operation.ID} className="list-group-item"><a href="#" onClick={this.addOperation.bind(this,operation.ID,operation.URL,operation.METHOD,operation.path)} style={style}>{operation.ID}</a></li>
 	  		);
 	  		content=<ul className="list-group">{operations}</ul>;
   		}else{
