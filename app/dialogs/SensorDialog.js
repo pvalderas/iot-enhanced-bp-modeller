@@ -62,8 +62,7 @@ export default class SensorDialog extends React.Component {
       let isOntology=localStorage.getItem("isOntology")=="1"?true:false;
       let isWoT=localStorage.getItem("isWoT")=="1"?true:false;
       if(this.serviceServerType=="eureka"){
-        let url=this.serviceServerUrl+(this.serviceServerUrl.charAt(this.serviceServerUrl.length-1)=="/"?"":"/")+localStorage.getItem("selectedSystem")+"/eureka/apps";
-        
+        var url=this.serviceServerUrl+(this.serviceServerUrl.charAt(this.serviceServerUrl.length-1)=="/"?"":"/")+localStorage.getItem("selectedSystem")+"/eureka/apps";
         fetch(url)
           .then(function (response) {
             return response.json();
@@ -85,6 +84,7 @@ export default class SensorDialog extends React.Component {
                    
                     let path=this.state.path.replace("{id}",id);
 
+                     console.log(path);
                     if(port!=80)
                         urls[name]="http://"+host+":"+port+"/microservices/"+path;
                     else
