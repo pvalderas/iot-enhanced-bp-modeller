@@ -38,10 +38,11 @@ export default class UploadDialog extends React.Component {
 
   }
 
-  updateSystem(system, isFloWare, isOntology){
+  updateSystem(system, isFloWare, isOntology, isWoT){
     localStorage.setItem("selectedSystem",system);
     localStorage.setItem("isFloWare",isFloWare);
     localStorage.setItem("isOntology",isOntology);
+    localStorage.setItem("isWoT",isWoT);
     updateMenuRedLabel();
     updateDownloadButtonFloWareOption();
     updateSendButtonFloWareOption();
@@ -49,9 +50,10 @@ export default class UploadDialog extends React.Component {
   }
 
   loadBPMN(compo){
+    console.log(compo);
     var user;
     if(compo.system){
-      this.updateSystem(compo.system, compo.isFloWare, compo.ontology);
+      this.updateSystem(compo.system, compo.isFloWare, compo.ontology, compo.isWoT);
       user=this.state.userID;
     }else{ //is called from SendSystemModelsDialog
       user=compo.user;

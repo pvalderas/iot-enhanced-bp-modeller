@@ -16,9 +16,12 @@ export default function ElementProperties(props) {
     modeler
   } = props;
 
-  var configLabel={
-    marginLeft: "100px",
-    marginTop: "10px",
+  let configLabel={
+    marginTop: "20px",
+    width: "100%",
+    textAlign: "center",
+    color: "gray",
+    fontSize: "20px"
   }
 
   let iot=false;
@@ -351,14 +354,14 @@ export default function ElementProperties(props) {
   function doNothing(){}
 
   function cleanEventInputs(){
-    var dev=document.getElementById('eventDev');
-    var event=document.getElementById('eventOp');
+    let dev=document.getElementById('eventDev');
+    let event=document.getElementById('eventOp');
 
-    var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+    let nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
     nativeInputValueSetter.call(dev, "");
     nativeInputValueSetter.call(event, "");
 
-    var inputEvent = new Event('input', { bubbles: true});
+    let inputEvent = new Event('input', { bubbles: true});
     dev.dispatchEvent(inputEvent);
     event.dispatchEvent(inputEvent);
 
@@ -369,7 +372,7 @@ export default function ElementProperties(props) {
     setEventType(input.value);
 
     const moddle= modeler.get('moddle');
-    var extensionElements=element.businessObject.extensionElements;
+    let extensionElements=element.businessObject.extensionElements;
     if(!extensionElements){
       extensionElements = moddle.create('bpmn:ExtensionElements');
     }

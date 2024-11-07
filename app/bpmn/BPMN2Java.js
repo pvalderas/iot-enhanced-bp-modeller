@@ -67,7 +67,7 @@ export default class BPMN2Java{
 					actuatorClass+='	}\r\n\r\n';
 				});
 				actuatorClass+='}';
-				zip.file(className+"Actuator.java", actuatorClass);
+				zip.file(device.name+"/src/main/java/"+className.toLowerCase()+"/"+className+"Actuator.java", actuatorClass);
 
 				//Azure intantiation
 				let classNameVar=className.charAt(0).toLowerCase()+className.substring(1);

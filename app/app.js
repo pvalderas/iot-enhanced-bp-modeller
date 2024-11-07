@@ -3,7 +3,7 @@ import React from 'react';
 
 import Modeler from 'bpmn-js/lib/Modeler';
 import PropertiesPanel from './properties-panel';
-import DownloadButton from './properties-panel/DownloadButton.js';
+//import DownloadButton from './properties-panel/DownloadButton.js';
 import Menu from './menu/Menu.js';
 import SendButton from './properties-panel/SendButton.js';
 import SendCompositionDialog from "./dialogs/SendCompositionDialog.js";
@@ -134,10 +134,11 @@ ReactDOM.render(
   $sendButtonContainer
 );
 
+/*
 ReactDOM.render(
   <DownloadButton modeler={modeler} bpmnManager={new BPMNManager(modeler)}/>,
   $downloadButtonContainer
-);
+);*/
 //***************************************
 
 
