@@ -1,7 +1,7 @@
 import React from 'react';
 import {showMessage} from './MessageDialog.js'
 import {updateMenuRedLabel,updateMenuTitle} from "../menu/Menu.js";
-import {updateDownloadButtonFloWareOption} from "../properties-panel/DownloadButton.js";
+//import {updateDownloadButtonFloWareOption} from "../properties-panel/DownloadButton.js";
 import {updateSendButtonFloWareOption} from "../properties-panel/SendButton.js";
 import {updateSendDialogFloWareOption} from "../dialogs/SendCompositionDialog.js";
 import './loader.css';
@@ -44,7 +44,7 @@ export default class UploadDialog extends React.Component {
     localStorage.setItem("isOntology",isOntology);
     localStorage.setItem("isWoT",isWoT);
     updateMenuRedLabel();
-    updateDownloadButtonFloWareOption();
+    //updateDownloadButtonFloWareOption();
     updateSendButtonFloWareOption();
     updateSendDialogFloWareOption();
   }

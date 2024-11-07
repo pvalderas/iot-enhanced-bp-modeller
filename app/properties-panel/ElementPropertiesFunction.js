@@ -53,7 +53,7 @@ export default function ElementProperties(props) {
   const [laneName, setLaneName] = useState("");
   const [sensor, setSensor] = useState(true);
 
-  if(device.length>0) loadSensors();
+  //if(device.length>0) loadSensors();
 
  
   if(is(element, 'bpmn:Lane')){ 
@@ -95,7 +95,6 @@ export default function ElementProperties(props) {
                setDescription(field.stringValue);
             }
           });
-
         }
 
   }else if(is(element, 'bpmn:ServiceTask') && 
@@ -278,7 +277,7 @@ export default function ElementProperties(props) {
   }
 
   function connectedToMessageFlow(){
-    var connected=false
+    let connected=false
     if(element.incoming){
       element.incoming.forEach(function(edge){
           if(edge.businessObject.$type=='bpmn:MessageFlow' && edge.businessObject.sourceRef.name=="PHYSICAL WORLD") connected=true;
@@ -322,15 +321,15 @@ export default function ElementProperties(props) {
 
     const moddle= modeler.get('moddle');
     
-    var extensionElements=element.businessObject.extensionElements;
+    let extensionElements=element.businessObject.extensionElements;
     if(!extensionElements){
       extensionElements = moddle.create('bpmn:ExtensionElements');
     }
 
     let values=extensionElements.get('values').filter(field => field.name!=fieldName);
 
-    var camundaNs = 'http://camunda.org/schema/1.0/bpmn';
-    var field=moddle.createAny('camunda:field',camundaNs, {name:fieldName, stringValue:value});
+    let camundaNs = 'http://camunda.org/schema/1.0/bpmn';
+    let field=moddle.createAny('camunda:field',camundaNs, {name:fieldName, stringValue:value});
     values.push(field);
 
     extensionElements.values=values;
@@ -359,11 +358,11 @@ export default function ElementProperties(props) {
 
     let nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
     nativeInputValueSetter.call(dev, "");
-    nativeInputValueSetter.call(event, "");
+    if(wot) nativeInputValueSetter.call(event, "");
 
     let inputEvent = new Event('input', { bubbles: true});
     dev.dispatchEvent(inputEvent);
-    event.dispatchEvent(inputEvent);
+    if(wot) event.dispatchEvent(inputEvent);
 
   }
 
@@ -385,7 +384,7 @@ export default function ElementProperties(props) {
     extensionElements.values=values;
     element.businessObject.extensionElements=extensionElements;
     
-    cleanEventInputs()
+    //cleanEventInputs()
     
   }
 

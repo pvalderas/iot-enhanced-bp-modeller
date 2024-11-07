@@ -51,10 +51,12 @@ export default class PropertiesView extends Component {
 
           //const propertiesPanel = modeler.get('propertiesPanel');
           if(e.newSelection.length!=1 || e.newSelection[0].businessObject.name=='PHYSICAL WORLD'){
+     
             hideOperationDialog();
             hideMicroserviceDialog();
             hideSensorDialog();
             hideEventDialog();
+       
             /*document.getElementById('right-property-panel-container').style.display='none';
             propertiesPanel.detach();
             document.getElementById('modeler-container').className="col-12";*/
