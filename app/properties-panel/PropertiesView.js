@@ -11,14 +11,11 @@ import ElementProperties from './ElementPropertiesFunction';
 
 import './PropertiesView.css';
 
-let jQuery = require("jquery");
-let configLabel={
-    marginTop: "20px",
-    width: "100%",
-    textAlign: "center",
-    color: "gray",
-    fontSize: "20px"
-  }
+var jQuery = require("jquery");
+var configLabel={
+    marginLeft: "100px",
+    marginTop: "10px",
+}
 
 export default class PropertiesView extends Component {
 

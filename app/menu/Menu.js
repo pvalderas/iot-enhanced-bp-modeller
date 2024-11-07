@@ -79,7 +79,7 @@ export default class Menu extends React.Component {
 		}
 
 		if(localStorage.getItem("isWoT")!="0"){
-			this.setState({displayWoT: true});
+				this.setState({displayWoT: true});
 		}else{
 			this.setState({displayWoT: false});
 		}
@@ -143,11 +143,7 @@ export default class Menu extends React.Component {
 		//simulationSupport.triggerElement(startEvent[0].id);
 
 		simulationTrace._log=function(event){
-			if(event.type=="tokenSimulation.simulator.trace" && event.action=="createScope" && event.element.type=="bpmn:ServiceTask"){
-				let iotDevice=event.element.businessObject.lanes[0].name.replaceAll("[","").replaceAll("]","");
-				let action=event.element.businessObject.name;
-				console.log(iotDevice+" executes "+action);
-			}
+			console.log(event);
 		}
 
 		simulationTrace.start();
