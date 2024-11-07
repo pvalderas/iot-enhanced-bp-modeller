@@ -70,7 +70,7 @@ export default class Menu extends React.Component {
 			this.setState({displayFloWare: false});
 		}
 
-		if(localStorage.getItem("isOntology")=="1"){
+		if(localStorage.getItem("isOntology")!="0"){
 				this.setState({displayOntology: true});
 		}else{
 			this.setState({displayOntology: false});

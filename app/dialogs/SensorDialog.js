@@ -68,17 +68,17 @@ export default class SensorDialog extends React.Component {
               const devices = microservices.applications.application.reduce((devices,microservice) =>{
      
                   if((isFloware && microservice.operations.length>0) || (!isFloware && microservice.sensor=="1")){
-                    var id=microservice.id;
-                    var name=microservice.name;
-                    var host=microservice.instance[0].hostName;
-                    var port=microservice.instance[0].port.$;
+                    let id=microservice.id;
+                    let name=microservice.name;
+                    let host=microservice.instance[0].hostName;
+                    let port=microservice.instance[0].port.$;
                     //urls[name]="http://"+host+":"+port+"/operations"; <-- With microservice architecture
                     //urls[name]="http://"+host+":"+port+"/microservices/sensor/"+id+"/events"; 
                     let path="sensor/"+id+"/events";
-                    if(isFloware) path=id+"/operation";
+                    if(isFloware) path=id+"/operations";
                     if(isOntology) path="sensor/"+id+"/observations";
-                    if(port!=80)
-                        urls[name]="http://"+host+":"+port+"/microservices/"+path;
+                    if(port && port!=80)
+                        urls[name]="https://"+host+":"+port+"/microservices/"+path;
                     else
                       urls[name]="https://"+host+"/microservices/"+path;
                      devices.push({

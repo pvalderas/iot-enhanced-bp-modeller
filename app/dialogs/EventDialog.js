@@ -45,8 +45,8 @@ export default class EventDialog extends React.Component {
   loadEvents(sensor) {
     document.querySelector('#'+this.state.loader).style.display = "block";
 
-    var urls=JSON.parse(sessionStorage.getItem("eventUrls"));
-    var url=urls[sensor];
+    let urls=JSON.parse(sessionStorage.getItem("eventUrls"));
+    let url=urls[sensor];
 
     fetch(url)
       .then(function (response) {
@@ -85,9 +85,11 @@ export default class EventDialog extends React.Component {
         var style={
                 color:"black"
               }
+
 	  		const events = this.state.events.map(event => 
 	  			<li key={event.id} className="list-group-item"><a href="#" onClick={this.addEvent.bind(this,event.name)} style={style}>{event.name}</a></li>
 	  		);
+      
 	  		content=<ul className="list-group">{events}</ul>;
   		}else{
   			content=this.state.error;

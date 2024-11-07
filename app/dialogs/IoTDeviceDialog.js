@@ -12,6 +12,10 @@ export var hideMicroserviceDialog = function(){
     window.iotDeviceDialog.hide();
 };
 
+export var createIoTDevicesList = function(microservices){
+    window.iotDeviceDialog.createIoTDevicesList(microservices);
+};
+
 export default class IoTDeviceDialog extends React.Component {
 
   constructor(props) {
@@ -33,6 +37,7 @@ export default class IoTDeviceDialog extends React.Component {
     this.loadIoTDevices=this.loadIoTDevices.bind(this);
     this.drawInColor=this.drawInColor.bind(this);
     this.getPoolName=this.getPoolName.bind(this);
+    this.createIoTDevicesList=this.createIoTDevicesList.bind(this);
   }
 
   show(){
@@ -71,6 +76,43 @@ export default class IoTDeviceDialog extends React.Component {
     return poolName;
   }
 
+  createIoTDevicesList(microservices){
+      let urls={};
+      let devices = microservices.applications.application.reduce((devices,microservice) =>{
+          if(microservice.operations.length>0){
+            let id=microservice.id;
+            let name=microservice.name;
+            let host=microservice.instance[0].hostName;
+            let port=microservice.instance[0].port.$;
+             //urls[name]="http://"+host+":"+port+"/operations"; <-- With microservice architecture
+             if(port!=80)
+                urls[name]="https://"+host+":"+port+"/microservices/"+id+"/operations"; //<-- With PHP emulator
+             else
+                urls[name]="https://"+host+"/microservices/"+id+"/operations";
+              devices.push({
+                name: name,
+                iot:microservice.iot,
+                sensor:microservice.sensor
+              });
+          }
+          return devices;
+      }, []);
+      if(devices.length>0){
+        this.setState({ devices: devices })
+        if(sessionStorage.getItem("urls")!=null){
+          var existingUrls=JSON.parse(sessionStorage.getItem("urls"));
+          Object.keys(existingUrls).forEach(function(key){
+              urls[key]=existingUrls[key];
+          });
+        }
+        sessionStorage.setItem("urls",JSON.stringify(urls));
+      }else{
+        if(localStorage.getItem("isFloWare")=="1")
+            this.setState({error:"There are no devices associated to the FloWare system that provide selectable operations."});
+      }
+      document.getElementById(this.state.loader).style.display = "none";
+  }
+
 
   loadIoTDevices() {
       document.getElementById(this.state.loader).style.display = "block";
@@ -90,47 +132,14 @@ export default class IoTDeviceDialog extends React.Component {
         }
    
        //url=url.replaceAll(" ","%20");
-  
+ 
         if(url!=null){
           fetch(url)
           .then(function (response) {
             return response.json();
           })
           .then(microservices => {
-              var urls={};
-              let devices = microservices.applications.application.reduce((devices,microservice) =>{
-                  if(microservice.operations.length>0){
-                    var id=microservice.id;
-                    var name=microservice.name;
-                    var host=microservice.instance[0].hostName;
-                    var port=microservice.instance[0].port.$;
-                     //urls[name]="http://"+host+":"+port+"/operations"; <-- With microservice architecture
-                     if(port!=80)
-                        urls[name]="http://"+host+":"+port+"/microservices/"+id+"/operations"; //<-- With PHP emulator
-                     else
-                     urls[name]="https://"+host+"/microservices/"+id+"/operations";
-                      devices.push({
-                        name: name,
-                        iot:microservice.iot,
-                        sensor:microservice.sensor
-                      });
-                  }
-                  return devices;
-              }, []);
-              if(devices.length>0){
-                this.setState({ devices: devices })
-                if(sessionStorage.getItem("urls")!=null){
-                  var existingUrls=JSON.parse(sessionStorage.getItem("urls"));
-                  Object.keys(existingUrls).forEach(function(key){
-                      urls[key]=existingUrls[key];
-                  });
-                }
-                sessionStorage.setItem("urls",JSON.stringify(urls));
-              }else{
-                if(localStorage.getItem("isFloWare")=="1")
-                    this.setState({error:"There are no devices associated to the FloWare system that provide selectable operations."});
-              }
-              document.getElementById(this.state.loader).style.display = "none";
+                createIoTDevicesList(microservices);
           })
           .catch(error => {
               this.setState({error:error});

@@ -73,6 +73,8 @@ const $overlayContainer = document.querySelector('#overlay-container');
 const $rightPropertyPanelContainer = document.querySelector('#right-property-panel-container');
 
 
+sessionStorage.clear();
+
 //***************************************
 // CREATING THE MODELER AND AN EMPTY MODEL
 //***************************************

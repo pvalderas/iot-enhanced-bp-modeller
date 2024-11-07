@@ -16,10 +16,13 @@ export default function ElementProperties(props) {
     modeler
   } = props;
 
-  var configLabel={
-    marginLeft: "100px",
-    marginTop: "10px",
-  }
+  let configLabel={
+      marginTop: "20px",
+      width: "100%",
+      textAlign: "center",
+      color: "gray",
+      fontSize: "20px"
+    }
 
   let iot=false;
   let iotLane="noiot";

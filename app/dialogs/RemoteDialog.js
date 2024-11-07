@@ -4,6 +4,7 @@ import {updateMenuRedLabel,updateMenuTitle} from "../menu/Menu.js";
 import {updateDownloadButtonFloWareOption} from "../properties-panel/DownloadButton.js";
 import {updateSendButtonFloWareOption} from "../properties-panel/SendButton.js";
 import {updateSendDialogFloWareOption} from "../dialogs/SendCompositionDialog.js";
+import {createIoTDevicesList} from "../dialogs/IoTDeviceDialog.js";
 import './loader.css';
 
 export var showRemoteDialog = function(){
@@ -73,13 +74,13 @@ export default class UploadDialog extends React.Component {
          
          $("#"+this.state.id).modal('hide');
 /************************************ REPETIDO EN IOTDEVICEDIALOG ************************************/
-        var url=localStorage.getItem("serviceServerUrl")+(localStorage.getItem("serviceServerUrl").charAt(localStorage.getItem("serviceServerUrl").length-1)=="/"?"":"/")+localStorage.getItem("selectedSystem")+"/eureka/apps";
+        let url=localStorage.getItem("serviceServerUrl")+(localStorage.getItem("serviceServerUrl").charAt(localStorage.getItem("serviceServerUrl").length-1)=="/"?"":"/")+localStorage.getItem("selectedSystem")+"/eureka/apps";
         fetch(url)
           .then(function (response) {
             return response.json();
           })
           .then(microservices => {
-              var urls={};
+             /* var urls={};
               const devices = microservices.applications.application.reduce((devices,microservice) =>{
                   var id=microservice.id;
                   var name=microservice.name;
@@ -90,12 +91,14 @@ export default class UploadDialog extends React.Component {
                    devices.push(name);
                   return devices;
               }, []);
-              sessionStorage.setItem("urls",JSON.stringify(urls));
+              sessionStorage.setItem("urls",JSON.stringify(urls));*/
+              createIoTDevicesList(microservices);
           })
           .catch(error => {
               this.setState({error:error});
             }
           )
+
 /*************************************************************************************************/
 
       })
