@@ -36,11 +36,9 @@ export default class EventDialog extends React.Component {
   }
 
   show(sensor){
-    //if(sensor!==this.state.sensor){
+    if(sensor!==this.state.sensor){
       this.loadEvents(sensor);
-    //}
-    if(localStorage.getItem("isOntology")=="2") this.setState({title:"Sensing Functions"});
-    else  if(localStorage.getItem("isWoT")=="1") this.setState({title:"Event"});
+    }
     document.querySelector('#'+this.state.id).style.display = "block";
   }
 
@@ -49,7 +47,6 @@ export default class EventDialog extends React.Component {
 
     var urls=JSON.parse(sessionStorage.getItem("eventUrls"));
     var url=urls[sensor];
-
 
     fetch(url)
       .then(function (response) {
@@ -85,14 +82,12 @@ export default class EventDialog extends React.Component {
   render(){
   		var content;
   		if(this.state.error==null) {
-
         var style={
                 color:"black"
               }
 	  		const events = this.state.events.map(event => 
 	  			<li key={event.id} className="list-group-item"><a href="#" onClick={this.addEvent.bind(this,event.name)} style={style}>{event.name}</a></li>
 	  		);
-  
 	  		content=<ul className="list-group">{events}</ul>;
   		}else{
   			content=this.state.error;

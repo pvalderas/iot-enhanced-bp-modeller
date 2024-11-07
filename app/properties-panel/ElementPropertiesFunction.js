@@ -23,9 +23,7 @@ export default function ElementProperties(props) {
 
   let iot=false;
   let iotLane="noiot";
-  let ontology=localStorage.getItem("isOntology")=="0"?false:true;
-  let wot=localStorage.getItem("isWoT")=="0"?false:true;
-  let ontologyType=parseInt(localStorage.getItem("isOntology"));
+  let ontology=localStorage.getItem("isOntology")=="1"?true:false;
 
   const activeClass={
     color: "#fff",
@@ -163,16 +161,7 @@ export default function ElementProperties(props) {
   }
 
   function showSensorList(){
-    let path="sensor/{id}/events";
-    if(eventType=="data"){
-      let isFloware=localStorage.getItem("isFloWare")=="1"?true:false;
-      let isOntology=localStorage.getItem("isOntology")=="1"?true:false;
-      let isWoT=localStorage.getItem("isWoT")=="1"?true:false;
-      if(isFloware) path="{id}/operations";
-      if(isOntology || isWoT) path="sensor/{id}/observations";
-    }
-
-  	if(ontology || wot || element.businessObject.name) showSensorDialog(path);
+  	if(ontology || element.businessObject.name) showSensorDialog();
     else showEventErrorDialog("eventName");
   }
 
@@ -340,7 +329,7 @@ export default function ElementProperties(props) {
                      setOperation("");
                       break;
       case "operation": setOperation(value);
-                        if(ontology || wot) updateName(value);
+                        if(ontology) updateName(value);
                         break;
       case "condition": setCondition(value);break;
       case "description": setDescription(value);break;
@@ -349,20 +338,6 @@ export default function ElementProperties(props) {
   }
 
   function doNothing(){}
-
-  function cleanEventInputs(){
-    var dev=document.getElementById('eventDev');
-    var event=document.getElementById('eventOp');
-
-    var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
-    nativeInputValueSetter.call(dev, "");
-    nativeInputValueSetter.call(event, "");
-
-    var inputEvent = new Event('input', { bubbles: true});
-    dev.dispatchEvent(inputEvent);
-    event.dispatchEvent(inputEvent);
-
-  }
 
   function eventTypeHandler(input){
 
@@ -381,9 +356,6 @@ export default function ElementProperties(props) {
 
     extensionElements.values=values;
     element.businessObject.extensionElements=extensionElements;
-    
-    cleanEventInputs()
-    
   }
 
 
@@ -393,7 +365,7 @@ export default function ElementProperties(props) {
       {
         is(element, 'bpmn:ServiceTask') && iot &&
            <form className="form-inline" style={{paddingTop:"20px"}}>
-            <label className="col-4 col-form-label">{ontologyType==2?"Function to execute":"Operation to execute"}</label>
+            <label className="col-4 col-form-label">Operation to execute</label>
             <input id="propertyValue" className="form-control col-4" value={ element.businessObject.get('name') || ''} onChange={ (event) => {
               updateOperation(event.target.value)
             } } />
@@ -490,11 +462,11 @@ export default function ElementProperties(props) {
               <input type="radio" name="eventType" value="complex" checked={eventType=="complex"} onChange={(event) => {eventTypeHandler(event.target)} }/> 
                   Complex
 
-              {eventType=="data" && !ontology && !wot &&
+              {eventType=="data" && !ontology &&
               <div className="row" style={{width:"100%", marginTop:"1px"}}>
                  <div className="mb-3 col-4" style={{paddingRight:"0px"}}>
                   <label htmlFor="eventName" className="form-label" style={{display:"inherit"}}>Name</label>
-                  <input id="eventName" className="form-control" value={ element.businessObject.name || ' ' } onChange={ (event) => {
+                  <input id="eventName" className="form-control" value={ element.businessObject.name || '' } onChange={ (event) => {
                   updateName(event.target.value)  } } style={{width:"100%"}}/>
                 </div>
 
@@ -509,7 +481,7 @@ export default function ElementProperties(props) {
               </div>
               }
 
-              {eventType=="data" && (ontology || wot) &&
+              {eventType=="data" && ontology &&
               <div className="row" style={{width:"100%", marginTop:"1px"}}>
                  <div className="mb-3 col-6" style={{paddingRight:"0px"}}>
                     <label htmlFor="eventDev" className="form-label" style={{display:"inherit"}}>Device</label>
@@ -521,7 +493,7 @@ export default function ElementProperties(props) {
                   </div>
 
                  <div className="mb-3 col-6" style={{paddingRight:"0px"}}>
-                  <label htmlFor="eventOp" className="form-label" style={{display:"inherit"}}>{wot==1?"Event":(ontologyType==1?"Observation":"Sensing Function")}</label>
+                  <label htmlFor="eventOp" className="form-label" style={{display:"inherit"}}>Observation</label>
                   <div className="input-group" >
                       <input type="text" className="form-control" id="eventOp" value={operation} disabled={true} onChange={ (event) => {
                     setEventField("operation", event.target.value) } } style={{width:"40%"}}/>

@@ -6,8 +6,3 @@ This work presents a web-tool that supports a modelling approach based on BPMN t
 
 This tool is also a key pillar in the creation of digital twins for IoT-Enhanced BPs.
 
-# Acknowledgement
-
-Grant MCIN/AEI/10.13039/501100011033 funded by: 
-
-<img src="./mcin.png" alt="Ministeria de Cienca e innovación" width="300px"> <img src="./aei.png" alt="Agencia Estatal de Investigación" width="100px"> 

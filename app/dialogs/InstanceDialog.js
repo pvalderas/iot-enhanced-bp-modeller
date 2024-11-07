@@ -30,7 +30,7 @@ export default class InstanceDialog extends React.Component {
     this.modeler=this.props.modeler;
     this.modeling= this.modeler.get('modeling');
     this.elementRegistry= this.modeler.get('elementRegistry');
-    this.bpmServerURL="https://pedvalar.webs.upv.es/microservices/instances/running/";
+    this.bpmServerURL="http://pedvalar.webs.upv.es/microservices/instances/running/";
 
     window.instanceDialog=this;
 

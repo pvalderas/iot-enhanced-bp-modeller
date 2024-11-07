@@ -321,6 +321,7 @@ export default class FloWarePSM{
 						let indexStringValue=model.indexOf("stringValue=",indexOperation);
 						let indexEndStringValue=model.indexOf("\" ",indexStringValue);
 						operations.push(model.substring(indexStringValue+13,indexEndStringValue));
+						console.log(model.substring(indexStringValue+13,indexEndStringValue));
 					}
 				}
 

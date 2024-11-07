@@ -5,8 +5,8 @@ import Dialog from './Dialog.js';
 import './loader.css';
 
 
-export var showSensorDialog = function(path){
-   window.sensorDialog.show(path);
+export var showSensorDialog = function(){
+   window.sensorDialog.show();
 };
 
 export var hideSensorDialog = function(){
@@ -27,8 +27,7 @@ export default class SensorDialog extends React.Component {
       type:"iotDeviceList",
       title:"IoT Devices",
       id:"sensorDialog",
-      loader:"sensorLoader",
-      path: undefined
+      loader:"sensorLoader"
     };
 
     this.serviceServerUrl=localStorage.getItem("serviceServerUrl");
@@ -38,14 +37,12 @@ export default class SensorDialog extends React.Component {
 
     this.loadSensors=this.loadSensors.bind(this);
     this.drawInColor=this.drawInColor.bind(this);
-
   }
 
-  show(path){
+  show(){
   //  if(sessionStorage.getItem("urls")==null){
       this.serviceServerUrl=localStorage.getItem("serviceServerUrl");
       this.serviceServerType=localStorage.getItem("serviceServerType");
-      this.setState({path:path})
       this.loadSensors();
   //  }
     document.querySelector('#'+this.state.id).style.display = "block";
@@ -60,7 +57,6 @@ export default class SensorDialog extends React.Component {
       document.querySelector('#'+this.state.loader).style.display = "block";
       let isFloware=localStorage.getItem("isFloWare")=="1"?true:false;
       let isOntology=localStorage.getItem("isOntology")=="1"?true:false;
-      let isWoT=localStorage.getItem("isWoT")=="1"?true:false;
       if(this.serviceServerType=="eureka"){
         var url=this.serviceServerUrl+(this.serviceServerUrl.charAt(this.serviceServerUrl.length-1)=="/"?"":"/")+localStorage.getItem("selectedSystem")+"/eureka/apps";
         fetch(url)
@@ -78,13 +74,9 @@ export default class SensorDialog extends React.Component {
                     var port=microservice.instance[0].port.$;
                     //urls[name]="http://"+host+":"+port+"/operations"; <-- With microservice architecture
                     //urls[name]="http://"+host+":"+port+"/microservices/sensor/"+id+"/events"; 
-                    /*let path="sensor/"+id+"/events";
-                    if(isFloware) path=id+"/operations";
-                    if(isOntology || isWoT) path="sensor/"+id+"/observations";*/
-                   
-                    let path=this.state.path.replace("{id}",id);
-
-                     console.log(path);
+                    let path="sensor/"+id+"/events";
+                    if(isFloware) path=id+"/operation";
+                    if(isOntology) path="sensor/"+id+"/observations";
                     if(port!=80)
                         urls[name]="http://"+host+":"+port+"/microservices/"+path;
                     else
@@ -128,9 +120,7 @@ export default class SensorDialog extends React.Component {
 
   addSensor(name){
     this.updateInput(name);
-    if(document.getElementById('eventOp')){
-      document.getElementById('eventOp').value="";
-    }
+    if(document.getElementById('eventOp')) document.getElementById('eventOp').value="";
     document.getElementById(this.state.id).style.display = "none";
   }
 
