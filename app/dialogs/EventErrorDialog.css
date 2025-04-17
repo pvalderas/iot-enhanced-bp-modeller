@@ -1,0 +1,18 @@
+.eventError-dialog{
+  position:fixed;
+  width:400px;
+  height:90px;
+  bottom:50px;
+  border:solid 2px black;
+  background-color:white;
+  overflow-y: auto;
+  z-index:1000;
+}
+
+.nameError{
+ left:200px;
+}
+
+.deviceError{
+  left:100px;
+}

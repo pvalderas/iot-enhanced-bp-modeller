@@ -1,0 +1,32 @@
+.microservices-dialog{
+  display:none;
+  position:fixed;
+  width:300px;
+  height:400px;
+  bottom:30px;
+  left:400px;
+  border:solid 2px black;
+  background-color:white;
+  overflow-y: auto;
+  z-index:1000;
+}
+
+.microservice-name{
+  text-align: center;
+  font-size: 20px;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+.eventNameError-dialog{
+  display:none;
+  position:fixed;
+  width:300px;
+  height:200px;
+  bottom:30px;
+  left:200px;
+  border:solid 2px black;
+  background-color:white;
+  overflow-y: auto;
+  z-index:1000;
+}

@@ -1,0 +1,68 @@
+    body, html {
+      height: 100%;
+      width: 100%;
+
+      margin: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      font-family: sans-serif;
+    }
+
+    .modeler-parent {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #modeler-container {
+      flex: 1;
+    }
+
+    #properties-container {
+      overflow-y: auto;
+
+      border-top: solid 2px black;
+      background: #FAFAFA;
+
+      padding: 5px;
+      height: 150px;
+    }
+
+     #properties-container fieldset{
+      margin-bottom: 10px;
+      border: solid 1px black;
+    }
+
+    .microservices-dialog{
+      display:none;
+      position:fixed;
+      width:300px;
+      height:400px;
+      bottom:30px;
+      left:400px;
+      border:solid 2px black;
+      background-color:white;
+      overflow-y: auto;
+      z-order:1000;
+    }
+
+    #send-button{
+      border-top:solid 2px black;
+      border-left:solid 1px black;
+      text-align:center;
+    }
+
+    #send-button button{
+      height:50px;
+      margin-top: 25px;
+    }
+
+    .djs-palette{
+      top:100px !important;
+    }
+
+    .bjs-powered-by{
+      display:none !important;
+    }

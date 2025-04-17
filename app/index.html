@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MicroService Compositor</title>
+
+  <link rel="stylesheet" href="vendor/bpmn-js/assets/diagram-js.css" />
+  <link rel="stylesheet" href="vendor/bpmn-js/assets/bpmn-font/css/bpmn-embedded.css" />
+  <link rel="stylesheet" href="vendor/bpmn-js-properties-panel/assets/properties-panel.css" />
+  <link rel="stylesheet" href="vendor/bpmn-js-token-simulation/assets/css/bpmn-js-token-simulation.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+  <style>
+    body, html {
+      height: 100%;
+      width: 100%;
+
+      margin: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      font-family: sans-serif;
+    }
+
+    .modeler-parent {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upper-container {
+      flex: 1;
+    }
+
+   
+    .div-button{
+      border-top:double 4px gray;
+      border-left:solid 1px gray;
+      text-align:center;
+    }
+ 
+   .djs-palette{
+      top:80px !important;
+    }
+
+    #right-property-panel-container{
+      padding-right: 0px;
+    }
+
+    .bts-toggle-mode{
+      right: 20px;
+      z-index: 10000;
+      left: inherit !important;
+      top: 5px !important;
+      display:none;
+    }
+
+
+
+/*
+    .bjs-powered-by{
+      display:none !important;
+    }
+*/
+  
+</style> 
+ 
+</head>
+<body>  
+  <div class="modeler-parent">
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu-container"></nav> <!-- class fixed-top -->
+    </div>
+    <div class="row upper-container" style="margin:0px"> 
+      <div id="modeler-container" class="col-12"></div>
+      <div id="right-property-panel-container" class="col-2" style="display:none"></div>
+    </div>
+    <div class="row" style="margin:0px" id="bottom-view"> 
+      <div id="properties-container" class="col-md-8"></div>
+      <div id="send-button-container" class="col-md-2 div-button"></div>
+      <div id="download-button-container" style="display:none"></div>
+      <div id="empty" class="col-md-2 div-button">
+        <span style="font-size:12px">Project PID2020-114480RB-I00 funded by:</span><br>
+        <img src="./imgs/mcin.png" alt="Ministerio de Cienca e innovación" width="150px"> 
+        <img src="./imgs/aei.png" alt="Agencia Estatal de Investigación" width="50px"> 
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="send-composition-dialog-container"></div>
+  <div id="send-system-models-dialog-container"></div>
+  <div id="download-dialog-container"></div>
+  <div id="upload-dialog-container"></div>
+  <div id="floWare-dialog-container"></div>
+  <div id="ontology-dialog-container"></div>
+  <div id="remote-dialog-container"></div>
+  <div id="iot-device-dialog-container"></div>
+  <div id="operation-dialog-container"></div>
+  <div id="sensor-dialog-container"></div>
+  <div id="event-dialog-container"></div>
+  <div id="event-error-dialog-container"></div>
+  <div id="message-dialog-container"></div>
+  <div id="config-dialog-container"></div>
+  <div id="floWareSystems-dialog-container"></div>
+  <div id="instances-dialog-container"></div>
+  <div id="overlay-container"></div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ 
+
+  <script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>
